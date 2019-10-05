@@ -162,13 +162,13 @@
                 <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        {{-- <router-link to="/dashboard" class="nav-link"> --}}
+                        <router-link to="/dashboard" class="nav-link">
                             <i class="nav-icon fa fa-th yellow"></i>
                             <p>
                                 Dashboard
                                 <span class="right badge badge-danger">New</span>
                             </p>
-                        {{-- </router-link> --}}
+                        </router-link>
                     </li>
 
                     <li class="nav-item has-treeview menu-open">
@@ -180,28 +180,26 @@
                             </p>
                         </a>
 
-                        @can('isAdmin')
+                        {{-- @can('isAdmin') --}}
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                {{-- <router-link to="/developer" class="nav-link"> --}}
+                                <router-link to="/user" class="nav-link">
                                     <i class="nav-icon fas fa-cogs red"></i>
                                         <p>
-                                            Developer
-
+                                            UserManagement
                                         </p>
-                                    {{-- </router-link> --}}
+                                </router-link>
                             </li>
                             <li class="nav-item">
-                                {{-- <router-link to="/admin" class="nav-link"> --}}
+                                <router-link to="/book" class="nav-link">
                                     <i class="nav-icon fas fa-user-plus orange"></i>
-                                    <p>
-                                        Admin
-
-                                    </p>
-                                {{-- </router-link> --}}
+                                        <p>
+                                            BookManagement
+                                        </p>
+                                </router-link>
                             </li>
                         </ul>
-                        @endcan
+                        {{-- @endcan --}}
 
                         {{-- @if(Gate::check('isAdmin') || Gate::check('isAuthor')) --}}
                         <ul class="nav nav-treeview">

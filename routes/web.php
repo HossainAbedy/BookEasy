@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('{path}', 'HomeController@index')->where( 'path' , '([A-z\d\-\/_.]+)?' );
 Route::post('/author', 'TestController@addauthor')->name('author');
 Route::post('/faculty', 'TestController@addfaculty')->name('faculty');
 Route::post('/course', 'TestController@addcourse')->name('course');

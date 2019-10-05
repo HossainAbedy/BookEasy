@@ -38,7 +38,6 @@ class HomeController extends Controller
             'course' => $course,
             'department' => $department
         ];
-
         return view('home',$data);
     }
 }

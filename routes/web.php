@@ -22,7 +22,7 @@ Route::get('{path}', 'HomeController@index')->where( 'path' , '([A-z\d\-\/_.]+)?
 Route::post('/author', 'TestController@addauthor')->name('author');
 Route::post('/faculty', 'TestController@addfaculty')->name('faculty');
 Route::post('/course', 'TestController@addcourse')->name('course');
-Route::post('/depertment', 'TestController@adddepertment')->name('depertment');
+Route::post('/department', 'TestController@adddepertment')->name('depertment');
 Route::post('/addbook', 'TestController@addbook')->name('addbook');
 // Route::post('/addbookinfo', 'TestController@addbookinfo')->name('addbookinfo');
 

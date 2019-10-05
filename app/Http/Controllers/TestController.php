@@ -13,9 +13,9 @@ class TestController extends Controller
 {
     public function addauthor(Request $request)
     {
-        //dd($request->author);
+    //    dd($request->toArray());
         $data = [
-            'name' => $request->author,
+            'name' => $request->name,
             'author_code' => rand(1,99),
         ];
         Author::create($data);
@@ -25,7 +25,7 @@ class TestController extends Controller
     {
         // dd($request->toArray());
         $data = [
-            'name' => $request->faculty,
+            'name' => $request->name,
             'facultie_code' => rand(1,99),
         ];
         Faculty::create($data);
@@ -34,7 +34,7 @@ class TestController extends Controller
     public function addcourse(Request $request)
     {
         $data = [
-            'name' => $request->course,
+            'name' => $request->name,
             'course_code' => rand(1,99),
         ];
         Course::create($data);
@@ -43,7 +43,7 @@ class TestController extends Controller
     public function adddepertment(Request $request)
     {
         $data = [
-            'name' => $request->depertment,
+            'name' => $request->name,
             'department_code' => rand(1,99),
         ];
         Department::create($data);

@@ -1996,6 +1996,128 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2013,9 +2135,58 @@ __webpack_require__.r(__webpack_exports__);
           faculty_name: '',
           course_name: '',
           department_name: ''
+        },
+        author: {
+          name: ''
+        },
+        faculty: {
+          name: ''
+        },
+        course: {
+          name: ''
+        },
+        department: {
+          name: ''
         }
       }
     };
+  },
+  methods: {
+    newModalAuthor: function newModalAuthor() {
+      $('#addNewA').modal('show');
+    },
+    createAuthor: function createAuthor() {
+      // this.$Progress.start();
+      //console.log(this.form);
+      axios.post('/author', this.form.author).then(function () {//console.log(this.form);
+        //   Fire.$emit('afterCreate');
+        //   $('#addNew').modal('hide')
+        //   toast.fire({
+        //     type: 'success',
+        //     title: 'Created successfully'
+        //     });
+        //   this.$Progress.finish();
+        //  .then(({ data }) => { console.log(data) });
+      })["catch"](function () {});
+    },
+    newModalFaculty: function newModalFaculty() {
+      $('#addNewF').modal('show');
+    },
+    createFaculty: function createFaculty() {
+      axios.post('/faculty', this.form.faculty).then(function () {})["catch"](function () {});
+    },
+    newModalCourse: function newModalCourse() {
+      $('#addNewC').modal('show');
+    },
+    createCourse: function createCourse() {
+      axios.post('/course', this.form.course).then(function () {})["catch"](function () {});
+    },
+    newModalDepartment: function newModalDepartment() {
+      $('#addNewD').modal('show');
+    },
+    createDepartment: function createDepartment() {
+      axios.post('/department', this.form.department).then(function () {})["catch"](function () {});
+    }
   },
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -38198,7 +38369,109 @@ var render = function() {
                             1
                           ),
                           _vm._v(" "),
-                          _vm._m(6)
+                          _c("div", { staticClass: "col-md-1" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-primary",
+                                attrs: { type: "button" },
+                                on: { click: _vm.newModalAuthor }
+                              },
+                              [_c("i", { staticClass: "fa fa-plus" })]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "modal fade",
+                              attrs: {
+                                id: "addNewA",
+                                tabindex: "-1",
+                                role: "dialog",
+                                "aria-labelledby": "exampleModalLabel",
+                                "aria-hidden": "true"
+                              }
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "modal-dialog modal-dialog-centered",
+                                  attrs: { role: "document" }
+                                },
+                                [
+                                  _c("div", { staticClass: "modal-content" }, [
+                                    _vm._m(6),
+                                    _vm._v(" "),
+                                    _c(
+                                      "form",
+                                      {
+                                        on: {
+                                          submit: function($event) {
+                                            $event.preventDefault()
+                                            return _vm.createAuthor()
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "div",
+                                          { staticClass: "modal-body" },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "form-group" },
+                                              [
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.form.author.name,
+                                                      expression:
+                                                        "form.author.name"
+                                                    }
+                                                  ],
+                                                  staticClass: "form-control",
+                                                  attrs: {
+                                                    type: "text",
+                                                    name: "name",
+                                                    placeholder: "Name"
+                                                  },
+                                                  domProps: {
+                                                    value: _vm.form.author.name
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.form.author,
+                                                        "name",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                })
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._m(7)
+                                      ]
+                                    )
+                                  ])
+                                ]
+                              )
+                            ]
+                          )
                         ])
                       ]),
                       _vm._v(" "),
@@ -38206,7 +38479,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-12" }, [
                         _c("div", { staticClass: "row" }, [
-                          _vm._m(7),
+                          _vm._m(8),
                           _vm._v(" "),
                           _c(
                             "div",
@@ -38234,18 +38507,122 @@ var render = function() {
                             1
                           ),
                           _vm._v(" "),
-                          _vm._m(8)
+                          _c("div", { staticClass: "col-md-1" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-primary",
+                                attrs: { type: "button" },
+                                on: { click: _vm.newModalFaculty }
+                              },
+                              [_c("i", { staticClass: "fa fa-plus" })]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "modal fade",
+                              attrs: {
+                                id: "addNewF",
+                                tabindex: "-1",
+                                role: "dialog",
+                                "aria-labelledby": "exampleModalLabel",
+                                "aria-hidden": "true"
+                              }
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "modal-dialog modal-dialog-centered",
+                                  attrs: { role: "document" }
+                                },
+                                [
+                                  _c("div", { staticClass: "modal-content" }, [
+                                    _vm._m(9),
+                                    _vm._v(" "),
+                                    _c(
+                                      "form",
+                                      {
+                                        on: {
+                                          submit: function($event) {
+                                            $event.preventDefault()
+                                            return _vm.createFaculty()
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "div",
+                                          { staticClass: "modal-body" },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "form-group" },
+                                              [
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.form.faculty.name,
+                                                      expression:
+                                                        "form.faculty.name"
+                                                    }
+                                                  ],
+                                                  staticClass: "form-control",
+                                                  attrs: {
+                                                    type: "text",
+                                                    name: "name",
+                                                    placeholder: "Name"
+                                                  },
+                                                  domProps: {
+                                                    value: _vm.form.faculty.name
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.form.faculty,
+                                                        "name",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                })
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._m(10)
+                                      ]
+                                    )
+                                  ])
+                                ]
+                              )
+                            ]
+                          )
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "col-md-6" }, [
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-12" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _vm._m(11),
+                          _vm._v(" "),
                           _c(
                             "div",
-                            { staticClass: "form-group" },
+                            { staticClass: "col-md-6" },
                             [
-                              _vm._m(9),
-                              _vm._v(" "),
                               _c("multiselect", {
                                 attrs: {
                                   options: _vm.course,
@@ -38266,41 +38643,257 @@ var render = function() {
                               })
                             ],
                             1
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-md-6" }, [
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-1" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-primary",
+                                attrs: { type: "button" },
+                                on: { click: _vm.newModalCourse }
+                              },
+                              [_c("i", { staticClass: "fa fa-plus" })]
+                            )
+                          ]),
+                          _vm._v(" "),
                           _c(
                             "div",
-                            { staticClass: "form-group" },
+                            {
+                              staticClass: "modal fade",
+                              attrs: {
+                                id: "addNewC",
+                                tabindex: "-1",
+                                role: "dialog",
+                                "aria-labelledby": "exampleModalLabel",
+                                "aria-hidden": "true"
+                              }
+                            },
                             [
-                              _vm._m(10),
-                              _vm._v(" "),
-                              _c("multiselect", {
-                                attrs: {
-                                  options: _vm.department,
-                                  label: "name",
-                                  "track-by": "id"
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "modal-dialog modal-dialog-centered",
+                                  attrs: { role: "document" }
                                 },
-                                model: {
-                                  value: _vm.form.book_info.department_name,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.form.book_info,
-                                      "department_name",
-                                      $$v
+                                [
+                                  _c("div", { staticClass: "modal-content" }, [
+                                    _vm._m(12),
+                                    _vm._v(" "),
+                                    _c(
+                                      "form",
+                                      {
+                                        on: {
+                                          submit: function($event) {
+                                            $event.preventDefault()
+                                            return _vm.createCourse()
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "div",
+                                          { staticClass: "modal-body" },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "form-group" },
+                                              [
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.form.course.name,
+                                                      expression:
+                                                        "form.course.name"
+                                                    }
+                                                  ],
+                                                  staticClass: "form-control",
+                                                  attrs: {
+                                                    type: "text",
+                                                    name: "name",
+                                                    placeholder: "Name"
+                                                  },
+                                                  domProps: {
+                                                    value: _vm.form.course.name
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.form.course,
+                                                        "name",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                })
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._m(13)
+                                      ]
                                     )
-                                  },
-                                  expression: "form.book_info.department_name"
-                                }
-                              })
-                            ],
-                            1
+                                  ])
+                                ]
+                              )
+                            ]
                           )
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm._m(11)
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-12" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _vm._m(14),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-6" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group" },
+                              [
+                                _c("multiselect", {
+                                  attrs: {
+                                    options: _vm.department,
+                                    label: "name",
+                                    "track-by": "id"
+                                  },
+                                  model: {
+                                    value: _vm.form.book_info.department_name,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.form.book_info,
+                                        "department_name",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "form.book_info.department_name"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-1" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-primary",
+                                attrs: { type: "button" },
+                                on: { click: _vm.newModalDepartment }
+                              },
+                              [_c("i", { staticClass: "fa fa-plus" })]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "modal fade",
+                              attrs: {
+                                id: "addNewD",
+                                tabindex: "-1",
+                                role: "dialog",
+                                "aria-labelledby": "exampleModalLabel",
+                                "aria-hidden": "true"
+                              }
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "modal-dialog modal-dialog-centered",
+                                  attrs: { role: "document" }
+                                },
+                                [
+                                  _c("div", { staticClass: "modal-content" }, [
+                                    _vm._m(15),
+                                    _vm._v(" "),
+                                    _c(
+                                      "form",
+                                      {
+                                        on: {
+                                          submit: function($event) {
+                                            $event.preventDefault()
+                                            return _vm.createDepartment()
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "div",
+                                          { staticClass: "modal-body" },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "form-group" },
+                                              [
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.form.department
+                                                          .name,
+                                                      expression:
+                                                        "form.department.name"
+                                                    }
+                                                  ],
+                                                  staticClass: "form-control",
+                                                  attrs: {
+                                                    type: "text",
+                                                    name: "name",
+                                                    placeholder: "Name"
+                                                  },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.form.department.name
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.form.department,
+                                                        "name",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                })
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._m(16)
+                                      ]
+                                    )
+                                  ])
+                                ]
+                              )
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(17)
                     ])
                   ])
                 ])
@@ -38375,11 +38968,43 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-1" }, [
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title", attrs: { id: "addNew" } }, [
+        _vm._v("Add New")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
       _c(
         "button",
         { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_c("i", { staticClass: "fa fa-plus" })]
+        [_vm._v("Create")]
       )
     ])
   },
@@ -38398,11 +39023,22 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-1" }, [
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title", attrs: { id: "addNew" } }, [
+        _vm._v("Add New")
+      ]),
+      _vm._v(" "),
       _c(
         "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_c("i", { staticClass: "fa fa-plus" })]
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
       )
     ])
   },
@@ -38410,18 +39046,131 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [
-      _vm._v("Course Name"),
-      _c("span", { staticClass: "requiredField red" }, [_vm._v("*")])
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Create")]
+      )
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [
-      _vm._v("Depertment Name"),
-      _c("span", { staticClass: "requiredField red" }, [_vm._v("*")])
+    return _c("div", { staticClass: "col-md-4" }, [
+      _c("label", [
+        _vm._v("Course Name"),
+        _c("span", { staticClass: "requiredField red" }, [_vm._v("*")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title", attrs: { id: "addNew" } }, [
+        _vm._v("Add New")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Create")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4" }, [
+      _c("label", [
+        _vm._v("Depertment Name"),
+        _c("span", { staticClass: "requiredField red" }, [_vm._v("*")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title", attrs: { id: "addNew" } }, [
+        _vm._v("Add New")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Create")]
+      )
     ])
   },
   function() {

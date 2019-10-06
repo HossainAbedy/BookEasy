@@ -11,6 +11,6 @@ class Book extends Model
 
     public function info()
     {
-        return $this->hasOne(BookInfo::class, 'book_info');
+        return $this->hasOne(BookInfo::class, 'id');
     }
 }

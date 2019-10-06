@@ -29,6 +29,7 @@ let routes = [
     { path: '/user', component: require('./components/UserManagement.vue').default},
     { path: '/book', component: require('./components/BookManagement.vue').default},
     { path: '/dashboard', component: require('./components/DashBoard.vue').default},
+    { path: '/booklist', component: require('./components/BookList.vue').default},
   ]
 
 const router = new VueRouter({

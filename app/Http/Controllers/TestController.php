@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
+    public function getbook(){
+        return $result = Book::with('info','info.author','info.faculty','info.course','info.department')->get()->toArray();
+    }
     public function addauthor(Request $request)
     {
     //    dd($request->toArray());
@@ -51,21 +54,22 @@ class TestController extends Controller
     }
     public function addbook(Request $request)
     {
+        //dd($request->toArray());
+        $info = [
+            'author_id' => $request->book_info['author_name']['id'],
+            'facultie_id' => $request->book_info['faculty_name']['id'],
+            'course_id' => $request->book_info['course_name']['id'],
+            'department_id' => $request->book_info['department_name']['id'],
+        ];
+        $book=BookInfo::create($info);
         $data = [
-            'name' => $request->book,
-            'book_info' => $request->book_info,
+            'name' => $request->name,
+            'book_info' => $book->id,
             'book_code' => rand(1,99),
-            'version' => rand(0.1,.99),
-            'price' => rand(100,900),
+            'version' => $request->version,
+            'price' => $request->price,
         ];
         Book::create($data);
-        $info = [
-            'author_id' => $request->author_id,
-            'facultie_id' => $request->facultie_id,
-            'course_id' => $request->course_id,
-            'department_id' => $request->department_id,
-        ];
-        BookInfo::create($info);
         return redirect('/home');
     }
     public function addbookinfo(Request $request)

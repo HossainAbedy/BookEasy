@@ -8,6 +8,8 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+window.Fire = new Vue(); //events
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -21,6 +23,7 @@ window.Vue = require('vue');
 
 // Vue.component('example-component', require('./components/UserManagement.vue').default);
 // Vue.component('example-component', require('./components/BookManagement.vue').default);
+
 //vue-router
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
@@ -33,7 +36,7 @@ let routes = [
   ]
 
 const router = new VueRouter({
-    mode: 'history',
+    // mode: 'history',
     routes // short for `routes: routes`
 })
 //vue-router

@@ -2245,6 +2245,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2270,11 +2285,14 @@ __webpack_require__.r(__webpack_exports__);
           name: ''
         },
         course: {
-          name: ''
+          name: '',
+          faculty_name: '',
+          department_name: ''
         },
         department: {
           name: ''
-        }
+        },
+        timer: ''
       }
     };
   },
@@ -2285,7 +2303,9 @@ __webpack_require__.r(__webpack_exports__);
     createAuthor: function createAuthor() {
       // this.$Progress.start();
       //console.log(this.form);
-      axios.post('/author', this.form.author).then(function () {//console.log(this.form);
+      axios.post('/author', this.form.author).then(function () {
+        Fire.$emit('afterCreate');
+        $('#addNewA').modal('hide'); //console.log(this.form);
         //   Fire.$emit('afterCreate');
         //   $('#addNew').modal('hide')
         //   toast.fire({
@@ -2316,7 +2336,26 @@ __webpack_require__.r(__webpack_exports__);
     },
     store: function store() {
       axios.post('/addbook', this.form).then(function () {})["catch"](function () {});
+    },
+    loadUsers: function loadUsers() {
+      //   if(this.$gate.isAdminOrAuthor()){
+      //     this.$Progress.start();
+      axios.get('/home').then(function (response) {// this.resultData = response.data;
+      }); // this.$Progress.finish();
+      // }
+    },
+    beforeDestroy: function beforeDestroy() {
+      clearInterval(this.timer);
     }
+  },
+  created: function created() {
+    var _this = this;
+
+    Fire.$on('afterCreate', function () {
+      console.log('Hudai mounted.');
+
+      _this.loadUsers();
+    });
   },
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -38437,7 +38476,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "table_head" }, [
+    return _c("thead", { staticClass: "table_head bg-dark" }, [
       _c("tr", [
         _c("th", [_vm._v("S/L")]),
         _vm._v(" "),
@@ -38675,6 +38714,7 @@ var render = function() {
                               _c("multiselect", {
                                 attrs: {
                                   options: _vm.author,
+                                  multiple: true,
                                   label: "name",
                                   "track-by": "id"
                                 },
@@ -39061,6 +39101,64 @@ var render = function() {
                                                   }
                                                 })
                                               ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "form-group" },
+                                              [
+                                                _c("multiselect", {
+                                                  attrs: {
+                                                    options: _vm.faculty,
+                                                    label: "name",
+                                                    "track-by": "id"
+                                                  },
+                                                  model: {
+                                                    value:
+                                                      _vm.form.course
+                                                        .faculty_name,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.form.course,
+                                                        "faculty_name",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression:
+                                                      "form.course.faculty_name"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "form-group" },
+                                              [
+                                                _c("multiselect", {
+                                                  attrs: {
+                                                    options: _vm.department,
+                                                    label: "name",
+                                                    "track-by": "id"
+                                                  },
+                                                  model: {
+                                                    value:
+                                                      _vm.form.course
+                                                        .department_name,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.form.course,
+                                                        "department_name",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression:
+                                                      "form.course.department_name"
+                                                  }
+                                                })
+                                              ],
+                                              1
                                             )
                                           ]
                                         ),
@@ -39449,7 +39547,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-4" }, [
       _c("label", [
-        _vm._v("Depertment Name"),
+        _vm._v("Department Name"),
         _c("span", { staticClass: "requiredField red" }, [_vm._v("*")])
       ])
     ])
@@ -54694,6 +54792,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+window.Fire = new Vue(); //events
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -54723,7 +54823,7 @@ var routes = [{
   component: __webpack_require__(/*! ./components/BookList.vue */ "./resources/js/components/BookList.vue")["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
-  mode: 'history',
+  // mode: 'history',
   routes: routes // short for `routes: routes`
 
 }); //vue-router

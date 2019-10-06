@@ -27,4 +27,4 @@ Route::post('/addbook', 'TestController@addbook')->name('addbook');
 // Route::post('/addbookinfo', 'TestController@addbookinfo')->name('addbookinfo');
 
 
-Route::get('{path}', 'HomeController@index')->where( 'path' , '([A-z\d\-\/_.]+)?' );
+// Route::get('{path}', 'HomeController@index')->where( 'path' , '([A-z\d\-\/_.]+)?' );

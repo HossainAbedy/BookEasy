@@ -76,6 +76,7 @@
                                                     <multiselect
                                                     v-model="form.book_info.author_name"
                                                     :options="author"
+                                                    :multiple="true"
                                                     label="name"
                                                     track-by="id" />
                                                 </div>
@@ -196,6 +197,20 @@
                                                                             class="form-control">
                                                                         <!-- <has-error :form="form" field="first_name"></has-error> -->
                                                                     </div>
+                                                                     <div class="form-group">
+                                                                        <multiselect
+                                                                        v-model="form.course.faculty_name"
+                                                                        :options="faculty"
+                                                                        label="name"
+                                                                        track-by="id" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <multiselect
+                                                                        v-model="form.course.department_name"
+                                                                        :options="department"
+                                                                        label="name"
+                                                                        track-by="id" />
+                                                                    </div>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -211,7 +226,7 @@
                                         <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <label>Depertment Name<span class="requiredField red">*</span></label>
+                                                    <label>Department Name<span class="requiredField red">*</span></label>
                                                  </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -294,11 +309,14 @@
                          name:''
                     },
                     course:{
-                        name:''
+                        name:'',
+                        faculty_name:'',                   
+                        department_name:'',
                     },
                     department:{
                         name:''
-                    }
+                    },
+                    timer: ''
                 }
             }
         },
@@ -311,6 +329,8 @@
                  //console.log(this.form);
                   axios.post('/author',this.form.author)
                  .then(() => {
+                     Fire.$emit('afterCreate');
+                     $('#addNewA').modal('hide')
                      //console.log(this.form);
                 //   Fire.$emit('afterCreate');
                 //   $('#addNew').modal('hide')
@@ -355,7 +375,25 @@
                  .then(() => {
                 }).catch( () => {
                 })
+            },
+            loadUsers(){
+            //   if(this.$gate.isAdminOrAuthor()){
+            //     this.$Progress.start();
+                    axios.get('/home').then((response) => {
+                    // this.resultData = response.data;
+                });
+                // this.$Progress.finish();
+                // }
+            },
+            beforeDestroy () {
+                clearInterval(this.timer)
             }
+        },
+        created(){
+            Fire.$on('afterCreate',() => {
+               console.log('Hudai mounted.')
+               this.loadUsers();
+           });
         },
         mounted() {
             console.log('Component mounted.')

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBookInfosTable extends Migration
+class CreateCoursesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,24 +13,14 @@ class CreateBookInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('book_infos', function (Blueprint $table) {
+        Schema::create('courses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('author_id');
-            $table->foreign('author_id')
-                    ->references('id')
-                    ->on('authors')
-                    ->onDelete('cascade')
-                    ->onUpdate('cascade');
-            $table->unsignedBigInteger('facultie_id');
-            $table->foreign('facultie_id')
+            $table->string('name')->unique();
+            $table->integer('course_code')->nullable();
+            $table->unsignedBigInteger('faculty_id');
+            $table->foreign('faculty_id')
                     ->references('id')
                     ->on('faculties')
-                    ->onDelete('cascade')
-                    ->onUpdate('cascade');
-            $table->unsignedBigInteger('course_id');
-            $table->foreign('course_id')
-                    ->references('id')
-                    ->on('courses')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
             $table->unsignedBigInteger('department_id');
@@ -50,6 +40,6 @@ class CreateBookInfosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('book_infos');
+        Schema::dropIfExists('courses');
     }
 }

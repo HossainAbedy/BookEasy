@@ -29,16 +29,19 @@ class TestController extends Controller
         // dd($request->toArray());
         $data = [
             'name' => $request->name,
-            'facultie_code' => rand(1,99),
+            'faculty_code' => rand(1,99),
         ];
         Faculty::create($data);
         return redirect('/home');
     }
     public function addcourse(Request $request)
     {
+        //dd($request->toArray());
         $data = [
             'name' => $request->name,
             'course_code' => rand(1,99),
+            'faculty_id' => $request->faculty_name['id'],
+            'department_id' => $request->department_name['id'],
         ];
         Course::create($data);
         return redirect('/home');
@@ -57,7 +60,7 @@ class TestController extends Controller
         //dd($request->toArray());
         $info = [
             'author_id' => $request->book_info['author_name']['id'],
-            'facultie_id' => $request->book_info['faculty_name']['id'],
+            'faculty_id' => $request->book_info['faculty_name']['id'],
             'course_id' => $request->book_info['course_name']['id'],
             'department_id' => $request->book_info['department_name']['id'],
         ];

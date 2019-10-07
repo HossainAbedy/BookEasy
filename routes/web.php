@@ -24,6 +24,7 @@ Route::post('/faculty', 'TestController@addfaculty')->name('faculty');
 Route::post('/course', 'TestController@addcourse')->name('course');
 Route::post('/department', 'TestController@adddepertment')->name('depertment');
 Route::post('/addbook', 'TestController@addbook')->name('addbook');
+Route::post('/formSubmit', 'TestController@formSubmit')->name('addbook');
 // Route::post('/addbookinfo', 'TestController@addbookinfo')->name('addbookinfo');
 
 

@@ -57,36 +57,26 @@ class TestController extends Controller
     }
     public function addbook(Request $request)
     {
-        //dd($request->toArray());
+        // dd($request->toArray());
+        $imageName = time().'.'.$request->image->getClientOriginalExtension();
+        $request->image->move(public_path('images'), $imageName);
         $info = [
-            'author_id' => $request->book_info['author_name']['id'],
-            'faculty_id' => $request->book_info['faculty_name']['id'],
-            'course_id' => $request->book_info['course_name']['id'],
-            'department_id' => $request->book_info['department_name']['id'],
+            'author_id' => $request->author_id,
+            'faculty_id' => $request->faculty_id,
+            'course_id' => $request->course_id,
+            'department_id' => $request->department_id,
         ];
         $book=BookInfo::create($info);
         $data = [
             'name' => $request->name,
-            'book_info' => $book->id,
+            'book_info' => $book->id, 
             'book_code' => rand(1,99),
             'version' => $request->version,
             'price' => $request->price,
+            'publication' => $request->publication,
+            'image' => $imageName   
         ];
         Book::create($data);
-        return redirect('/home');
-    }
-    public function addbookinfo(Request $request)
-    {
-        // dd($request->toArray());
-        // $data = [
-        //     'author_id' => $request->author_id,
-        //     'facultie_id' => $request->facultie_id,
-        //     'course_id' => $request->course_id,
-        //     'department_id' => $request->department_id,
-        // ];
-        $result = BookInfo::with('author','faculty','course','department')->get();
-        dd($result->toArray());
-        BookInfo::create($data);
         return redirect('/home');
     }
 }

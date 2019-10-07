@@ -24,6 +24,7 @@
                                 <tr>
                                     <th>S/L</th>
                                     <th>Name</th>
+                                    <th>Image</th>
                                     <th>Version</th>
                                     <th>Price</th>
                                     <th>Author</th>
@@ -41,9 +42,10 @@
                                         <!-- <td><a @click="viewData(value.id)">#{{value.id}}</a></td> -->
                                         <!-- <td>{{value.id}}</td> -->
                                         <td>{{value.name}}</td>
+                                        <td>{{value.image}}</td>
                                         <td>{{value.version}}</td>
                                         <td>{{value.price}}</td>
-                                        <td>{{value.info.author.name}}</td>
+                                        <td>{{value.info[index].author.name}}</td>
                                         <td>{{value.info.faculty.name}}</td>
                                         <td>{{value.info.course.name}}</td>
                                         <td>{{value.info.department.name}}</td>
@@ -96,9 +98,10 @@
         },
         mounted() {
             axios.get('/book').then((response) => {
-                    this.resultData = response.data;
+                    this.resultData = response.data[0];
+                    console.log(response.data[0])
                 });
-            console.log('Component mounted.')
+            
         }
     }
 </script>

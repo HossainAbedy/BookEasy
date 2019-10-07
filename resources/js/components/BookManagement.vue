@@ -63,6 +63,47 @@
                                                 </div>
                                             </div> -->
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="text">Publication<span class="requiredField red">*</span></label>
+                                                    <input type="text" class="form-control"
+                                                    placeholder="Publication" v-model="form.publication"
+                                                    name="publication" >
+                                                    <!-- <has-error :form="form" field="org_name"></has-error> -->
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-8">
+                                              <div class="form-group">
+                                                    <div v-if="success != ''" class="alert alert-success" role="alert">
+                                                    {{success}}
+                                                    </div>
+                                                    <!-- <form @submit="formSubmit" enctype="multipart/form-data"> -->
+                                                        <div class="row">                               
+                                                            <div class="col-md-6">
+                                                                <label>Image<span class="requiredField red">*</span></label>
+                                                                <input type="file" class="form-control" v-on:change="onImageChange">
+                                                            </div> 
+                                                            <!-- <div class="col-md-6">
+                                                                 <label>&nbsp;</label>                                  
+                                                                <button class="btn btn-success form-control"><b>Add Image</b></button>
+                                                            </div> -->
+                                                        </div>
+                                                    <!-- </form> -->
+                                                </div>
+                                            </div>
+
+                                            <!-- <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Price<span class="requiredField red">*</span></label>
+                                                    <input type="text" class="form-control"
+                                                    placeholder="Price" v-model="form.price"
+                                                    name="price" >
+                                                    <has-error :form="form" field="present_address"></has-error>
+                                                </div>
+                                            </div> -->
+                                        </div>
                                         <hr>
                                         <h4 class="text-center"><b><i class="ft-save"></i> Book Info</b></h4>
                                         <hr>
@@ -76,7 +117,7 @@
                                                     <multiselect
                                                     v-model="form.book_info.author_name"
                                                     :options="author"
-                                                    :multiple="true"
+                                                    :multiple="false"
                                                     label="name"
                                                     track-by="id" />
                                                 </div>
@@ -296,6 +337,8 @@
                     name:'',
                     version:'',
                     price:'',
+                    image:null,
+                    publication:'',
                     book_info:{
                         author_name:'',
                         faculty_name:'',
@@ -306,7 +349,7 @@
                         name:''
                     },
                     faculty:{
-                         name:''
+                        name:''
                     },
                     course:{
                         name:'',
@@ -316,8 +359,10 @@
                     department:{
                         name:''
                     },
-                    timer: ''
-                }
+                },
+                success: '',
+                image:null,
+                timer:'',
             }
         },
         methods:{
@@ -370,10 +415,27 @@
                 }).catch( () => {
                 })
             },
-            store(){
-                axios.post('/addbook',this.form)
-                 .then(() => {
-                }).catch( () => {
+            onImageChange(e){
+                console.log(e.target.files[0]);
+                this.image = e.target.files[0];
+            },
+            store(e){
+                let formData = new FormData();
+                formData.append('image', this.image);
+                formData.append('name', this.form.name);
+                formData.append('version', this.form.version);
+                formData.append('price', this.form.price);
+                formData.append('publication', this.form.publication);
+                formData.append('author_id', this.form.book_info.author_name.id);
+                formData.append('faculty_id', this.form.book_info.faculty_name.id);
+                formData.append('course_id', this.form.book_info.course_name.id);
+                formData.append('department_id', this.form.book_info.department_name.id);
+                axios.post('/addbook',formData)
+                 .then(function (response) {
+                    // this.success = response.data.success;
+                })
+                .catch(function (error) {
+                    // this.output = error;
                 })
             },
             loadUsers(){

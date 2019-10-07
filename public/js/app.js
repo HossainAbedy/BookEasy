@@ -1944,6 +1944,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1954,9 +1956,9 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('/book').then(function (response) {
-      _this.resultData = response.data;
+      _this.resultData = response.data[0];
+      console.log(response.data[0]);
     });
-    console.log('Component mounted.');
   }
 });
 
@@ -2260,6 +2262,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2272,6 +2315,8 @@ __webpack_require__.r(__webpack_exports__);
         name: '',
         version: '',
         price: '',
+        image: null,
+        publication: '',
         book_info: {
           author_name: '',
           faculty_name: '',
@@ -2291,9 +2336,11 @@ __webpack_require__.r(__webpack_exports__);
         },
         department: {
           name: ''
-        },
-        timer: ''
-      }
+        }
+      },
+      success: '',
+      image: null,
+      timer: ''
     };
   },
   methods: {
@@ -2334,8 +2381,24 @@ __webpack_require__.r(__webpack_exports__);
     createDepartment: function createDepartment() {
       axios.post('/department', this.form.department).then(function () {})["catch"](function () {});
     },
-    store: function store() {
-      axios.post('/addbook', this.form).then(function () {})["catch"](function () {});
+    onImageChange: function onImageChange(e) {
+      console.log(e.target.files[0]);
+      this.image = e.target.files[0];
+    },
+    store: function store(e) {
+      var formData = new FormData();
+      formData.append('image', this.image);
+      formData.append('name', this.form.name);
+      formData.append('version', this.form.version);
+      formData.append('price', this.form.price);
+      formData.append('publication', this.form.publication);
+      formData.append('author_id', this.form.book_info.author_name.id);
+      formData.append('faculty_id', this.form.book_info.faculty_name.id);
+      formData.append('course_id', this.form.book_info.course_name.id);
+      formData.append('department_id', this.form.book_info.department_name.id);
+      axios.post('/addbook', formData).then(function (response) {// this.success = response.data.success;
+      })["catch"](function (error) {// this.output = error;
+      });
     },
     loadUsers: function loadUsers() {
       //   if(this.$gate.isAdminOrAuthor()){
@@ -38426,11 +38489,15 @@ var render = function() {
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(value.name))]),
                             _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(value.image))]),
+                            _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(value.version))]),
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(value.price))]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(value.info.author.name))]),
+                            _c("td", [
+                              _vm._v(_vm._s(value.info[index].author.name))
+                            ]),
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(value.info.faculty.name))]),
                             _vm._v(" "),
@@ -38481,6 +38548,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("S/L")]),
         _vm._v(" "),
         _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Image")]),
         _vm._v(" "),
         _c("th", [_vm._v("Version")]),
         _vm._v(" "),
@@ -38697,15 +38766,86 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-md-4" }, [
+                          _c("div", { staticClass: "form-group" }, [
+                            _vm._m(4),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.publication,
+                                  expression: "form.publication"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "text",
+                                placeholder: "Publication",
+                                name: "publication"
+                              },
+                              domProps: { value: _vm.form.publication },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "publication",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-8" }, [
+                          _c("div", { staticClass: "form-group" }, [
+                            _vm.success != ""
+                              ? _c(
+                                  "div",
+                                  {
+                                    staticClass: "alert alert-success",
+                                    attrs: { role: "alert" }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                                " +
+                                        _vm._s(_vm.success) +
+                                        "\n                                                "
+                                    )
+                                  ]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-md-6" }, [
+                                _vm._m(5),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control",
+                                  attrs: { type: "file" },
+                                  on: { change: _vm.onImageChange }
+                                })
+                              ])
+                            ])
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
                       _c("hr"),
                       _vm._v(" "),
-                      _vm._m(4),
+                      _vm._m(6),
                       _vm._v(" "),
                       _c("hr"),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-12" }, [
                         _c("div", { staticClass: "row" }, [
-                          _vm._m(5),
+                          _vm._m(7),
                           _vm._v(" "),
                           _c(
                             "div",
@@ -38714,7 +38854,7 @@ var render = function() {
                               _c("multiselect", {
                                 attrs: {
                                   options: _vm.author,
-                                  multiple: true,
+                                  multiple: false,
                                   label: "name",
                                   "track-by": "id"
                                 },
@@ -38768,7 +38908,7 @@ var render = function() {
                                 },
                                 [
                                   _c("div", { staticClass: "modal-content" }, [
-                                    _vm._m(6),
+                                    _vm._m(8),
                                     _vm._v(" "),
                                     _c(
                                       "form",
@@ -38829,7 +38969,7 @@ var render = function() {
                                           ]
                                         ),
                                         _vm._v(" "),
-                                        _vm._m(7)
+                                        _vm._m(9)
                                       ]
                                     )
                                   ])
@@ -38844,7 +38984,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-12" }, [
                         _c("div", { staticClass: "row" }, [
-                          _vm._m(8),
+                          _vm._m(10),
                           _vm._v(" "),
                           _c(
                             "div",
@@ -38906,7 +39046,7 @@ var render = function() {
                                 },
                                 [
                                   _c("div", { staticClass: "modal-content" }, [
-                                    _vm._m(9),
+                                    _vm._m(11),
                                     _vm._v(" "),
                                     _c(
                                       "form",
@@ -38967,7 +39107,7 @@ var render = function() {
                                           ]
                                         ),
                                         _vm._v(" "),
-                                        _vm._m(10)
+                                        _vm._m(12)
                                       ]
                                     )
                                   ])
@@ -38982,7 +39122,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-12" }, [
                         _c("div", { staticClass: "row" }, [
-                          _vm._m(11),
+                          _vm._m(13),
                           _vm._v(" "),
                           _c(
                             "div",
@@ -39044,7 +39184,7 @@ var render = function() {
                                 },
                                 [
                                   _c("div", { staticClass: "modal-content" }, [
-                                    _vm._m(12),
+                                    _vm._m(14),
                                     _vm._v(" "),
                                     _c(
                                       "form",
@@ -39163,7 +39303,7 @@ var render = function() {
                                           ]
                                         ),
                                         _vm._v(" "),
-                                        _vm._m(13)
+                                        _vm._m(15)
                                       ]
                                     )
                                   ])
@@ -39178,7 +39318,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-12" }, [
                         _c("div", { staticClass: "row" }, [
-                          _vm._m(14),
+                          _vm._m(16),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-6" }, [
                             _c(
@@ -39242,7 +39382,7 @@ var render = function() {
                                 },
                                 [
                                   _c("div", { staticClass: "modal-content" }, [
-                                    _vm._m(15),
+                                    _vm._m(17),
                                     _vm._v(" "),
                                     _c(
                                       "form",
@@ -39305,7 +39445,7 @@ var render = function() {
                                           ]
                                         ),
                                         _vm._v(" "),
-                                        _vm._m(16)
+                                        _vm._m(18)
                                       ]
                                     )
                                   ])
@@ -39316,7 +39456,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm._m(17)
+                      _vm._m(19)
                     ])
                   ])
                 ])
@@ -39365,6 +39505,24 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", [
       _vm._v("Price"),
+      _c("span", { staticClass: "requiredField red" }, [_vm._v("*")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "text" }, [
+      _vm._v("Publication"),
+      _c("span", { staticClass: "requiredField red" }, [_vm._v("*")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [
+      _vm._v("Image"),
       _c("span", { staticClass: "requiredField red" }, [_vm._v("*")])
     ])
   },

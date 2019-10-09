@@ -2431,11 +2431,11 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('department_id', this.form.book_info.department_name.id);
       axios.post('/addbook', formData).then(function (response) {
         this.$Progress.start();
+        Fire.$emit('BookCreate');
         toast.fire({
           type: 'success',
           title: 'Book Added successfully'
         });
-        this.form.reset();
         this.$Progress.finish();
       })["catch"](function (error) {// this.output = error;
       });
@@ -2444,10 +2444,9 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this4 = this;
 
-    Fire.$on('afterCreate', function () {
-      console.log('Hudai mounted.');
-
-      _this4.loadUsers();
+    Fire.$on('BookCreate', function () {
+      console.log('BookCreate.');
+      _this4.form = '';
     });
   },
   mounted: function mounted() {

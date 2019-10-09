@@ -452,11 +452,11 @@
                 axios.post('/addbook',formData)
                  .then(function (response) {
                     this.$Progress.start();
+                    Fire.$emit('BookCreate');
                     toast.fire({
                         type: 'success',
                         title: 'Book Added successfully'
                         });
-                        this.form.reset();
                     this.$Progress.finish();
                 })
                 .catch(function (error) {
@@ -465,9 +465,9 @@
             },
         },
         created(){
-            Fire.$on('afterCreate',() => {
-               console.log('Hudai mounted.')
-               this.loadUsers();
+            Fire.$on('BookCreate',() => {
+                console.log('BookCreate.')
+                this.form='';
            });
         },
         mounted() {

@@ -1855,6 +1855,8 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1972,52 +1974,64 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Multiselect: vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
+  props: ['author', 'faculty', 'course', 'department'],
   data: function data() {
     return {
       resultData: [],
-      resultFilter: []
+      resultFilter: [],
+      author_id: '',
+      faculty_id: '',
+      course_id: '',
+      department_id: ''
     };
   },
   methods: {
-    authorBYSearch: function authorBYSearch() {
+    search: function search() {
       var _this = this;
 
-      axios.get('/filter').then(function (response) {
+      axios.get('/filter/author_id?author_id=' + this.author_id.id + '&faculty_id?faculty_id=' + this.faculty_id.id + '&course_id?course_id=' + this.course_id.id + '&department_id?department_id=' + this.department_id.id).then(function (response) {
         _this.resultFilter = response.data.data;
-        console.log(response.data);
-      });
-    },
-    facultyBYSearch: function facultyBYSearch() {
-      var _this2 = this;
-
-      axios.get('/filter').then(function (response) {
-        _this2.resultFilter = response.data.data;
-        console.log(response.data);
-      });
-    },
-    courseBYSearch: function courseBYSearch() {
-      var _this3 = this;
-
-      axios.get('/filter').then(function (response) {
-        _this3.resultFilter = response.data.data;
-        console.log(response.data);
-      });
-    },
-    departmentBYSearch: function departmentBYSearch() {
-      var _this4 = this;
-
-      axios.get('/filter').then(function (response) {
-        _this4.resultFilter = response.data.data;
         console.log(response.data);
       });
     }
   },
   mounted: function mounted() {
-    var _this5 = this;
+    var _this2 = this;
 
     axios.get('/book').then(function (response) {
-      _this5.resultData = response.data.data;
+      _this2.resultData = response.data.data;
       console.log(response.data);
     });
   }
@@ -41547,70 +41561,101 @@ var render = function() {
         [
           _c("div", { staticClass: "card-header" }, [_vm._v("Filter")]),
           _vm._v(" "),
+          _vm._m(3),
+          _vm._v(" "),
           _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-3" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary btn-min-width mr-1 mb-1",
-                  attrs: { type: "button" },
-                  on: { click: _vm.authorBYSearch }
-                },
-                [
-                  _c("i", { staticClass: "fa fa-check" }),
-                  _vm._v(" "),
-                  _c("b", [_vm._v("Author")])
-                ]
-              )
-            ]),
+            _c(
+              "div",
+              { staticClass: "col-md-3" },
+              [
+                _c("multiselect", {
+                  attrs: {
+                    options: _vm.author,
+                    multiple: false,
+                    label: "name",
+                    "track-by": "id"
+                  },
+                  on: { input: _vm.search },
+                  model: {
+                    value: _vm.author_id,
+                    callback: function($$v) {
+                      _vm.author_id = $$v
+                    },
+                    expression: "author_id"
+                  }
+                })
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "col-md-3" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary btn-min-width mr-1 mb-1",
-                  attrs: { type: "button" },
-                  on: { click: _vm.facultyBYSearch }
-                },
-                [
-                  _c("i", { staticClass: "fa fa-check" }),
-                  _vm._v(" "),
-                  _c("b", [_vm._v("Faculty")])
-                ]
-              )
-            ]),
+            _c(
+              "div",
+              { staticClass: "col-md-3" },
+              [
+                _c("multiselect", {
+                  attrs: {
+                    options: _vm.faculty,
+                    label: "name",
+                    "track-by": "id"
+                  },
+                  on: { input: _vm.search },
+                  model: {
+                    value: _vm.faculty_id,
+                    callback: function($$v) {
+                      _vm.faculty_id = $$v
+                    },
+                    expression: "faculty_id"
+                  }
+                })
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "col-md-3" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary btn-min-width mr-1 mb-1",
-                  attrs: { type: "button" },
-                  on: { click: _vm.courseBYSearch }
-                },
-                [
-                  _c("i", { staticClass: "fa fa-check" }),
-                  _vm._v(" "),
-                  _c("b", [_vm._v("Course")])
-                ]
-              )
-            ]),
+            _c(
+              "div",
+              { staticClass: "col-md-3" },
+              [
+                _c("multiselect", {
+                  attrs: {
+                    options: _vm.course,
+                    label: "name",
+                    "track-by": "id"
+                  },
+                  on: { input: _vm.search },
+                  model: {
+                    value: _vm.course_id,
+                    callback: function($$v) {
+                      _vm.course_id = $$v
+                    },
+                    expression: "course_id"
+                  }
+                })
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "col-md-3" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary btn-min-width mr-1 mb-1",
-                  attrs: { type: "button" },
-                  on: { click: _vm.departmentBYSearch }
-                },
-                [
-                  _c("i", { staticClass: "fa fa-check" }),
-                  _vm._v(" "),
-                  _c("b", [_vm._v("Department")])
-                ]
-              )
-            ])
+            _c(
+              "div",
+              { staticClass: "col-md-3" },
+              [
+                _c("multiselect", {
+                  attrs: {
+                    options: _vm.department,
+                    label: "name",
+                    "track-by": "id"
+                  },
+                  on: { input: _vm.search },
+                  model: {
+                    value: _vm.department_id,
+                    callback: function($$v) {
+                      _vm.department_id = $$v
+                    },
+                    expression: "department_id"
+                  }
+                })
+              ],
+              1
+            )
           ]),
           _vm._v(" "),
           _vm._l(_vm.resultFilter, function(value, index) {
@@ -41680,6 +41725,28 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("tr", [
       _c("td", { attrs: { colspan: "4" } }, [_vm._v("No Data Available.")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("label", [_c("strong", [_vm._v("Author")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("label", [_c("strong", [_vm._v("Faculty")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("label", [_c("strong", [_vm._v("Course")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("label", [_c("strong", [_vm._v("Department")])])
+      ])
     ])
   }
 ]
@@ -58493,8 +58560,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/html/BookEasy/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/html/BookEasy/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\BookEasy\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\BookEasy\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

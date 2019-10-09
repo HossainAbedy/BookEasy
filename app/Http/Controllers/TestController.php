@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
+    public function search(Request $request){
+        dd($request->toArray());
+    }
     public function getbook(){
         // $result = Book::with(['info' => function($q){
         //     $q->with('course.faculty','course.department');
@@ -86,12 +89,12 @@ class TestController extends Controller
         $book=BookInfo::create($info);
         $data = [
             'name' => $request->name,
-            'book_info' => $book->id, 
+            'book_info' => $book->id,
             'book_code' => rand(1,99),
             'version' => $request->version,
             'price' => $request->price,
             'publication' => $request->publication,
-            'image' => $imageName   
+            'image' => $imageName
         ];
         Book::create($data);
         return redirect('/home');

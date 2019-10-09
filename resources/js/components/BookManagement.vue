@@ -147,7 +147,7 @@
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                                    <button type="submit" @Click="document.location.reload(true)" class="btn btn-primary">Create</button>
+                                                                    <button type="submit" class="btn btn-primary">Create</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -450,16 +450,17 @@
                 formData.append('course_id', this.form.book_info.course_name.id);
                 formData.append('department_id', this.form.book_info.department_name.id);
                 axios.post('/addbook',formData)
-                 .then(function (response) {
+                 .then( () => {
                     this.$Progress.start();
                     Fire.$emit('BookCreate');
                     toast.fire({
                         type: 'success',
                         title: 'Book Added successfully'
                         });
+                        this.$form.reset();
                     this.$Progress.finish();
                 })
-                .catch(function (error) {
+                .catch( () => {
                     // this.output = error;
                 })
             },
@@ -467,7 +468,7 @@
         created(){
             Fire.$on('BookCreate',() => {
                 console.log('BookCreate.')
-                this.form='';
+               
            });
         },
         mounted() {

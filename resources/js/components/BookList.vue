@@ -40,7 +40,7 @@
                                     <tr v-for="(value,index) in resultData" :key="index">
                                         <td>{{++index}}</td>
                                         <td>{{value.name}}</td>
-                                         <td><img :src="'/images/'+value.image" style="height:80px;width:80px;"></td>
+                                        <td><img :src="'/images/'+value.image" style="height:80px;width:80px;"></td>
                                         <td>{{value.version}}</td>
                                         <td>{{value.price}}</td>
                                         <td>{{value.author_name}}</td>
@@ -83,6 +83,34 @@
                     </div>
                 </div>
             </div>
+            <div class="card col-md-12">
+                <div class="card-header">Filter</div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <button type="button" @click="authorBYSearch" class="btn btn-primary btn-min-width mr-1 mb-1">                                  
+                            <i class="fa fa-check"></i> <b>Author</b>                                 
+                        </button>
+                    </div>
+                     <div class="col-md-3">
+                        <button type="button" @click="facultyBYSearch" class="btn btn-primary btn-min-width mr-1 mb-1">                                  
+                            <i class="fa fa-check"></i> <b>Faculty</b>                                 
+                        </button>
+                    </div>
+                     <div class="col-md-3">
+                        <button type="button" @click="courseBYSearch" class="btn btn-primary btn-min-width mr-1 mb-1">                                  
+                            <i class="fa fa-check"></i> <b>Course</b>                                 
+                        </button>
+                    </div>
+                     <div class="col-md-3">
+                        <button type="button" @click="departmentBYSearch" class="btn btn-primary btn-min-width mr-1 mb-1">                                  
+                            <i class="fa fa-check"></i> <b>Department</b>                                 
+                        </button>
+                    </div>
+                </div>        
+                <div class="card-body" v-for="(value,index) in resultFilter" :key="index">
+                    <img :src="'/images/'+value.image" style="height:400px;width:400px;">
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -91,14 +119,41 @@
     export default {
         data(){
             return {
-                resultData: [], 
+                resultData: [],
+                resultFilter: [],  
             }
+        },
+        methods:{
+            authorBYSearch(){
+                axios.get('/filter').then((response) => {
+                this.resultFilter = response.data.data;
+                console.log(response.data)
+            });
+            },
+            facultyBYSearch(){
+                axios.get('/filter').then((response) => {
+                this.resultFilter = response.data.data;
+                console.log(response.data)
+            });
+            },
+            courseBYSearch(){
+                axios.get('/filter').then((response) => {
+                this.resultFilter = response.data.data;
+                console.log(response.data)
+            });
+            },
+            departmentBYSearch(){
+                axios.get('/filter').then((response) => {
+                this.resultFilter = response.data.data;
+                console.log(response.data)
+            });
+            },
         },
         mounted() {
             axios.get('/book').then((response) => {
-                    this.resultData = response.data.data;
-                    console.log(response.data)
-                });
+                this.resultData = response.data.data;
+                console.log(response.data)
+            });
             
         },
 

@@ -11,13 +11,19 @@
                     </div>    
                 </div>
                 <div class="card-body">
+                    <vue-progress-bar></vue-progress-bar>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
                     <div class="row justify-content-center">
-                        You are logged in!
+                        <p>You are logged in as</p>
+                        @if(Auth::user()->user_type == 'admin')
+                            <p class="admin">{{Str::upper(Auth::user()->user_type)}}</p>
+                        @elseif(Auth::user()->user_type == 'user')
+                            <p class="user">{{Str::upper(Auth::user()->user_type)}}</p>
+                        @endif
                     </div>    
                     <router-view    :author="{{json_encode($author)}}"
                                     :faculty="{{json_encode($faculty)}}"

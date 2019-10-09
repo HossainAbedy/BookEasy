@@ -153,7 +153,7 @@
                 {{-- <img src="" class="img-circle elevation-2" alt="User Image"> --}}
                 </div>
                 <div class="info">
-                <a href="#" class="d-block">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</a>
+                <a href="#" class="d-block">{{Auth::user()->name}}</a>
                 </div>
             </div>
             <!-- Sidebar Menu -->
@@ -288,7 +288,7 @@
             <div class="content">
             <div class="container-fluid">
                 @yield('content')
-                {{-- <vue-progress-bar></vue-progress-bar> --}}
+                <vue-progress-bar></vue-progress-bar>
             </div><!-- /.container-fluid -->
             </div>
             <!-- /.content -->

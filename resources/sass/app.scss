@@ -19,24 +19,21 @@ $fa-font-path:'../webfonts';
 .navbar-laravel {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-  }
+}
+
 .router-link-exact-active{
     background-color: #ff0505;
     color: #fff !important;
-  }
-.admin{
-    color:red;
-    font-weight:bold;
-    padding-left:10px;
 }
-.surveyor{
-    color:blue;
+
+.admin{
+    color:rgb(252, 0, 0);
     font-weight:bold;
     padding-left:10px;
 }
 
 .user{
-    color:green;
+    color:rgb(7, 255, 7);
     font-weight:bold;
     padding-left:10px;
 }

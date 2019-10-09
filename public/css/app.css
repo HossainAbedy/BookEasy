@@ -29687,19 +29687,13 @@ readers do not read off random characters that represent icons */
 }
 
 .admin {
-  color: red;
-  font-weight: bold;
-  padding-left: 10px;
-}
-
-.surveyor {
-  color: blue;
+  color: #fc0000;
   font-weight: bold;
   padding-left: 10px;
 }
 
 .user {
-  color: green;
+  color: #07ff07;
   font-weight: bold;
   padding-left: 10px;
 }

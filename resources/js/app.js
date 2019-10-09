@@ -10,6 +10,28 @@ window.Vue = require('vue');
 
 window.Fire = new Vue(); //events
 
+ //sweetalert
+import swal from 'sweetalert2'
+window.swal = swal;
+
+const toast = swal.mixin({  //toaster
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+});
+window.toast = toast;//toaster
+
+//sweetalert
+
+//progressbar
+import VueProgressBar from 'vue-progressbar'
+Vue.use(VueProgressBar, {
+  color: 'rgb(143, 255, 199)',
+  failedColor: 'red',
+  height: '5px',
+})
+//progressbar
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

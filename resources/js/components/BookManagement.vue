@@ -370,23 +370,18 @@
                 $('#addNewA').modal('show')
             },
             createAuthor(){
-                // this.$Progress.start();
-                 //console.log(this.form);
-                  axios.post('/author',this.form.author)
-                 .then(() => {
-                     Fire.$emit('afterCreate');
-                     $('#addNewA').modal('hide')
-                     //console.log(this.form);
-                //   Fire.$emit('afterCreate');
-                //   $('#addNew').modal('hide')
-                //   toast.fire({
-                //     type: 'success',
-                //     title: 'Created successfully'
-                //     });
-                //   this.$Progress.finish();
-                //  .then(({ data }) => { console.log(data) });
-                }).catch( () => {
+                this.$Progress.start();
+                axios.post('/author',this.form.author)
+                .then(() => { 
+                    Fire.$emit('afterCreate');
+                    $('#addNewA').modal('hide')
+                    toast.fire({
+                        type: 'success',
+                        title: 'Created successfully'
+                        });                   
+                    }).catch( () => {
                 })
+                this.$Progress.finish();
             },
             newModalFaculty(){
                 $('#addNewF').modal('show')
@@ -394,8 +389,15 @@
             createFaculty(){
                   axios.post('/faculty',this.form.faculty)
                  .then(() => {
-                     $('#addNewF').modal('hide')
-                }).catch( () => {
+                    this.$Progress.start();
+                    Fire.$emit('afterCreate');
+                    $('#addNewF').modal('hide')
+                    toast.fire({
+                        type: 'success',
+                        title: 'Created successfully'
+                        });
+                    this.$Progress.finish();
+                    }).catch( () => {
                 })
             },
             newModalCourse(){
@@ -404,8 +406,15 @@
             createCourse(){
                   axios.post('/course',this.form.course)
                  .then(() => {
-                     $('#addNewC').modal('hide')
-                }).catch( () => {
+                    this.$Progress.start();
+                    Fire.$emit('afterCreate');
+                    $('#addNewC').modal('hide')
+                    toast.fire({
+                        type: 'success',
+                        title: 'Created successfully'
+                        });
+                    this.$Progress.finish();
+                    }).catch( () => {
                 })
             },
             newModalDepartment(){
@@ -414,7 +423,14 @@
             createDepartment(){
                   axios.post('/department',this.form.department)
                  .then(() => {
-                     $('#addNewD').modal('hide')
+                    this.$Progress.start();
+                    Fire.$emit('afterCreate');
+                    $('#addNewD').modal('hide')
+                    toast.fire({
+                        type: 'success',
+                        title: 'Created successfully'
+                        });
+                    this.$Progress.finish();
                 }).catch( () => {
                 })
             },
@@ -435,24 +451,18 @@
                 formData.append('department_id', this.form.book_info.department_name.id);
                 axios.post('/addbook',formData)
                  .then(function (response) {
-                    // this.success = response.data.success;
+                    this.$Progress.start();
+                    toast.fire({
+                        type: 'success',
+                        title: 'Book Added successfully'
+                        });
+                        this.form.reset();
+                    this.$Progress.finish();
                 })
                 .catch(function (error) {
                     // this.output = error;
                 })
             },
-            loadUsers(){
-            //   if(this.$gate.isAdminOrAuthor()){
-            //     this.$Progress.start();
-                    axios.get('/home').then((response) => {
-                    // this.resultData = response.data;
-                });
-                // this.$Progress.finish();
-                // }
-            },
-            beforeDestroy () {
-                clearInterval(this.timer)
-            }
         },
         created(){
             Fire.$on('afterCreate',() => {
@@ -461,6 +471,7 @@
            });
         },
         mounted() {
+            this.$Progress.finish()
             console.log('Component mounted.')
         }
     }

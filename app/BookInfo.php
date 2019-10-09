@@ -14,19 +14,19 @@ class BookInfo extends Model
 
     public function author()
     {
-        return $this->hasOne(Author::class,'id');
+        return $this->belongsTo(Author::class,'id');
     }
     public function faculty()
     {
-        return $this->hasOne(Faculty::class, 'id');
+        return $this->belongsTo(Faculty::class, 'id');
     }
     public function course()
     {
-        return $this->hasOne(Course::class, 'id');
+        return $this->belongsTo(Course::class, 'id');
     }
     public function department()
     {
-        return $this->hasOne(Department::class, 'id');
+        return $this->belongsTo(Department::class, 'id');
     }
 }
 

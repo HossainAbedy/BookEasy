@@ -12,7 +12,24 @@ use Illuminate\Http\Request;
 class TestController extends Controller
 {
     public function getbook(){
-        return $result = Book::with('info','info.author','info.faculty','info.course','info.department')->get()->toArray();
+        // $result = Book::with(['info' => function($q){
+        //     $q->with('course.faculty','course.department');
+        // },'info.author' => function($q){
+        //     $q->join('book_infos','info.author_id','author.id')
+        //       ->select('name')
+        //       ->where('authors.id','book_infos.author_id');
+        // }])->get()->toArray();
+        $result = Book::join('book_infos','book_infos.id','=','books.book_info')
+                ->join('authors','authors.id','=','book_infos.author_id')
+                ->join('faculties','faculties.id','=','book_infos.faculty_id')
+                ->join('departments','departments.id','=','book_infos.department_id')
+                ->join('courses','courses.id','=','book_infos.course_id')
+                ->select('books.name','books.image','books.version','books.publication','books.price','books.created_at',
+                        'authors.name as author_name','faculties.name as faculty_name','courses.name as course_name','departments.name as department_name')
+                ->get()
+                ->toArray();
+        return response()->json(['status'=>'success','data'=>$result]);
+
     }
     public function addauthor(Request $request)
     {

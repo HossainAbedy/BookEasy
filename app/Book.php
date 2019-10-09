@@ -4,7 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\BookInfo;
-use App\BookImage;
 
 class Book extends Model
 {

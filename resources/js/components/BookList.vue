@@ -39,16 +39,14 @@
                                 <tbody v-if="resultData!=''">
                                     <tr v-for="(value,index) in resultData" :key="index">
                                         <td>{{++index}}</td>
-                                        <!-- <td><a @click="viewData(value.id)">#{{value.id}}</a></td> -->
-                                        <!-- <td>{{value.id}}</td> -->
                                         <td>{{value.name}}</td>
-                                        <td>{{value.image}}</td>
+                                         <td><img :src="'/images/'+value.image" style="height:80px;width:80px;"></td>
                                         <td>{{value.version}}</td>
                                         <td>{{value.price}}</td>
-                                        <td>{{value.info[index].author.name}}</td>
-                                        <td>{{value.info.faculty.name}}</td>
-                                        <td>{{value.info.course.name}}</td>
-                                        <td>{{value.info.department.name}}</td>
+                                        <td>{{value.author_name}}</td>
+                                        <td>{{value.faculty_name}}</td>
+                                        <td>{{value.course_name}}</td>
+                                        <td>{{value.department_name}}</td>
                                         <td>{{value.created_at}}</td>
                                         <td>
                                             <!-- <div v-if="value.status == 1" class="badge badge-warning badge-round ">
@@ -98,10 +96,18 @@
         },
         mounted() {
             axios.get('/book').then((response) => {
-                    this.resultData = response.data[0];
-                    console.log(response.data[0])
+                    this.resultData = response.data.data;
+                    console.log(response.data)
                 });
             
-        }
+        },
+        // computed : {
+        //     dataUrl(){
+        //         return 'data:image/jpeg;base64,' + btoa(
+        //             new Uint8Array(this.resultData.image)
+        //             .reduce((data, byte) => data + String.fromCharCode(byte), '')
+        //         );
+        //     }
+        // }
     }
 </script>

@@ -1944,8 +1944,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1956,10 +1954,18 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('/book').then(function (response) {
-      _this.resultData = response.data[0];
-      console.log(response.data[0]);
+      _this.resultData = response.data.data;
+      console.log(response.data);
     });
-  }
+  } // computed : {
+  //     dataUrl(){
+  //         return 'data:image/jpeg;base64,' + btoa(
+  //             new Uint8Array(this.resultData.image)
+  //             .reduce((data, byte) => data + String.fromCharCode(byte), '')
+  //         );
+  //     }
+  // }
+
 });
 
 /***/ }),
@@ -2367,19 +2373,25 @@ __webpack_require__.r(__webpack_exports__);
       $('#addNewF').modal('show');
     },
     createFaculty: function createFaculty() {
-      axios.post('/faculty', this.form.faculty).then(function () {})["catch"](function () {});
+      axios.post('/faculty', this.form.faculty).then(function () {
+        $('#addNewF').modal('hide');
+      })["catch"](function () {});
     },
     newModalCourse: function newModalCourse() {
       $('#addNewC').modal('show');
     },
     createCourse: function createCourse() {
-      axios.post('/course', this.form.course).then(function () {})["catch"](function () {});
+      axios.post('/course', this.form.course).then(function () {
+        $('#addNewC').modal('hide');
+      })["catch"](function () {});
     },
     newModalDepartment: function newModalDepartment() {
       $('#addNewD').modal('show');
     },
     createDepartment: function createDepartment() {
-      axios.post('/department', this.form.department).then(function () {})["catch"](function () {});
+      axios.post('/department', this.form.department).then(function () {
+        $('#addNewD').modal('hide');
+      })["catch"](function () {});
     },
     onImageChange: function onImageChange(e) {
       console.log(e.target.files[0]);
@@ -38489,23 +38501,24 @@ var render = function() {
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(value.name))]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(value.image))]),
+                            _c("td", [
+                              _c("img", {
+                                staticStyle: { height: "80px", width: "80px" },
+                                attrs: { src: "/images/" + value.image }
+                              })
+                            ]),
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(value.version))]),
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(value.price))]),
                             _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(value.info[index].author.name))
-                            ]),
+                            _c("td", [_vm._v(_vm._s(value.author_name))]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(value.info.faculty.name))]),
+                            _c("td", [_vm._v(_vm._s(value.faculty_name))]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(value.info.course.name))]),
+                            _c("td", [_vm._v(_vm._s(value.course_name))]),
                             _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(value.info.department.name))
-                            ]),
+                            _c("td", [_vm._v(_vm._s(value.department_name))]),
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(value.created_at))]),
                             _vm._v(" "),
@@ -38969,7 +38982,39 @@ var render = function() {
                                           ]
                                         ),
                                         _vm._v(" "),
-                                        _vm._m(9)
+                                        _c(
+                                          "div",
+                                          { staticClass: "modal-footer" },
+                                          [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "btn btn-danger",
+                                                attrs: {
+                                                  type: "button",
+                                                  "data-dismiss": "modal"
+                                                }
+                                              },
+                                              [_vm._v("Close")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "btn btn-primary",
+                                                attrs: { type: "submit" },
+                                                on: {
+                                                  Click: function($event) {
+                                                    return _vm.document.location.reload(
+                                                      true
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [_vm._v("Create")]
+                                            )
+                                          ]
+                                        )
                                       ]
                                     )
                                   ])
@@ -38984,7 +39029,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-12" }, [
                         _c("div", { staticClass: "row" }, [
-                          _vm._m(10),
+                          _vm._m(9),
                           _vm._v(" "),
                           _c(
                             "div",
@@ -39046,7 +39091,7 @@ var render = function() {
                                 },
                                 [
                                   _c("div", { staticClass: "modal-content" }, [
-                                    _vm._m(11),
+                                    _vm._m(10),
                                     _vm._v(" "),
                                     _c(
                                       "form",
@@ -39107,7 +39152,7 @@ var render = function() {
                                           ]
                                         ),
                                         _vm._v(" "),
-                                        _vm._m(12)
+                                        _vm._m(11)
                                       ]
                                     )
                                   ])
@@ -39122,7 +39167,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-12" }, [
                         _c("div", { staticClass: "row" }, [
-                          _vm._m(13),
+                          _vm._m(12),
                           _vm._v(" "),
                           _c(
                             "div",
@@ -39184,7 +39229,7 @@ var render = function() {
                                 },
                                 [
                                   _c("div", { staticClass: "modal-content" }, [
-                                    _vm._m(14),
+                                    _vm._m(13),
                                     _vm._v(" "),
                                     _c(
                                       "form",
@@ -39303,7 +39348,7 @@ var render = function() {
                                           ]
                                         ),
                                         _vm._v(" "),
-                                        _vm._m(15)
+                                        _vm._m(14)
                                       ]
                                     )
                                   ])
@@ -39318,7 +39363,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-12" }, [
                         _c("div", { staticClass: "row" }, [
-                          _vm._m(16),
+                          _vm._m(15),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-6" }, [
                             _c(
@@ -39382,7 +39427,7 @@ var render = function() {
                                 },
                                 [
                                   _c("div", { staticClass: "modal-content" }, [
-                                    _vm._m(17),
+                                    _vm._m(16),
                                     _vm._v(" "),
                                     _c(
                                       "form",
@@ -39445,7 +39490,7 @@ var render = function() {
                                           ]
                                         ),
                                         _vm._v(" "),
-                                        _vm._m(18)
+                                        _vm._m(17)
                                       ]
                                     )
                                   ])
@@ -39456,7 +39501,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm._m(19)
+                      _vm._m(18)
                     ])
                   ])
                 ])
@@ -39565,27 +39610,6 @@ var staticRenderFns = [
           }
         },
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-danger",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Create")]
       )
     ])
   },

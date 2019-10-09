@@ -147,7 +147,7 @@
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                                    <button type="submit" class="btn btn-primary">Create</button>
+                                                                    <button type="submit" @Click="document.location.reload(true)" class="btn btn-primary">Create</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -238,7 +238,7 @@
                                                                             class="form-control">
                                                                         <!-- <has-error :form="form" field="first_name"></has-error> -->
                                                                     </div>
-                                                                     <div class="form-group">
+                                                                    <div class="form-group">
                                                                         <multiselect
                                                                         v-model="form.course.faculty_name"
                                                                         :options="faculty"
@@ -394,6 +394,7 @@
             createFaculty(){
                   axios.post('/faculty',this.form.faculty)
                  .then(() => {
+                     $('#addNewF').modal('hide')
                 }).catch( () => {
                 })
             },
@@ -403,6 +404,7 @@
             createCourse(){
                   axios.post('/course',this.form.course)
                  .then(() => {
+                     $('#addNewC').modal('hide')
                 }).catch( () => {
                 })
             },
@@ -412,6 +414,7 @@
             createDepartment(){
                   axios.post('/department',this.form.department)
                  .then(() => {
+                     $('#addNewD').modal('hide')
                 }).catch( () => {
                 })
             },

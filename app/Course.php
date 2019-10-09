@@ -13,7 +13,7 @@ class Course extends Model
 
     public function faculty()
     {
-        return $this->hasOne(Faculty::class, 'id');
+        return $this->belongsTo(Faculty::class, 'id');
     }
     public function book()
     {
@@ -21,6 +21,6 @@ class Course extends Model
     }
     public function department()
     {
-        return $this->hasOne(Department::class, 'id');
+        return $this->belongsTo(Department::class, 'id');
     }
 }

@@ -173,7 +173,7 @@
 
                     <li class="nav-item has-treeview menu-open">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-cog green"></i>
+                            <i class="nav-icon fas fa-cogs purple"></i>
                             <p>
                                 Management
                                 <i class="right fa fa-angle-left"></i>
@@ -184,7 +184,7 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <router-link to="/user" class="nav-link">
-                                    <i class="nav-icon fas fa-cogs red"></i>
+                                    <i class="nav-icon fas fa-user-plus green"></i>
                                         <p>
                                             UserManagement
                                         </p>
@@ -192,7 +192,7 @@
                             </li>
                             <li class="nav-item">
                                 <router-link to="/book" class="nav-link">
-                                    <i class="nav-icon fas fa-user-plus orange"></i>
+                                    <i class="nav-icon fas fa-cog orange"></i>
                                         <p>
                                             BookManagement
                                         </p>
@@ -202,47 +202,47 @@
                         {{-- @endcan --}}
 
                         {{-- @if(Gate::check('isAdmin') || Gate::check('isAuthor')) --}}
-                        <ul class="nav nav-treeview">
+                        {{-- <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                {{-- <router-link to="/surveyor" class="nav-link"> --}}
+                                <router-link to="/surveyor" class="nav-link">
                                     <i class="nav-icon fas fa-users purple"></i>
                                     <p>
                                         Surveyor
                                     </p>
-                                {{-- </router-link> --}}
+                                </router-link>
                             </li>
                         </ul>
 
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                {{-- <router-link to="/user" class="nav-link"> --}}
+                                <router-link to="/user" class="nav-link">
                                     <i class="nav-icon fas fa-user teal"></i>
                                      <p>
                                         User
                                     </p>
-                                {{-- </router-link> --}}
+                                </router-link>
                             </li>
-                        </ul>
+                        </ul> --}}
                         {{-- @endif --}}
                     </li>
 
 
-                    <li class="nav-item">
-                        {{-- <router-link to="/surveyform" class="nav-link"> --}}
+                    {{-- <li class="nav-item">
+                        <router-link to="/surveyform" class="nav-link">
                         <i class="nav-icon fab fa-wpforms blue"></i>
                         <p>
                             Survey Form
                         </p>
-                        {{-- </router-link> --}}
-                    </li>
+                        </router-link>
+                    </li> --}}
 
                     <li class="nav-item">
-                        {{-- <router-link to="/formlist" class="nav-link"> --}}
-                        <i class="nav-icon fab fa-wpforms green"></i>
+                        <router-link to="/orderbook" class="nav-link">
+                        <i class="nav-icon fab fa-wpforms blue"></i>
                         <p>
-                            Form List
+                            Order Books
                         </p>
-                        {{-- </router-link> --}}
+                        </router-link>
                     </li>
 
                     <li class="nav-item">

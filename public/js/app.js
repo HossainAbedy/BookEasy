@@ -1855,8 +1855,6 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
-/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1946,92 +1944,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    Multiselect: vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default.a
-  },
-  props: ['author', 'faculty', 'course', 'department'],
   data: function data() {
     return {
-      resultData: [],
-      resultFilter: [],
-      author_id: '',
-      faculty_id: '',
-      course_id: '',
-      department_id: ''
+      resultData: []
     };
   },
-  methods: {
-    search: function search() {
-      var _this = this;
-
-      axios.get('/filter/author_id?author_id=' + this.author_id.id + '&faculty_id?faculty_id=' + this.faculty_id.id + '&course_id?course_id=' + this.course_id.id + '&department_id?department_id=' + this.department_id.id).then(function (response) {
-        _this.resultFilter = response.data.data;
-        console.log(response.data);
-      });
-    }
-  },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this = this;
 
     axios.get('/book').then(function (response) {
-      _this2.resultData = response.data.data;
+      _this.resultData = response.data.data;
       console.log(response.data);
     });
   }
@@ -2566,6 +2489,152 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/OrderBook.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/OrderBook.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Multiselect: vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
+  props: ['author', 'faculty', 'course', 'department'],
+  data: function data() {
+    return {
+      resultData: [],
+      author_info: {
+        id: ''
+      },
+      faculty_info: {
+        id: ''
+      },
+      course_info: {
+        id: ''
+      },
+      department_info: {
+        id: ''
+      }
+    };
+  },
+  methods: {
+    search: function search() {
+      var _this = this;
+
+      axios.get('/search/author_info?author_info=' + this.author_info.id + '&faculty_info=' + this.faculty_info.id + '&course_info=' + this.course_info.id + '&department_info=' + this.department_info.id).then(function (response) {
+        _this.resultData = response.data;
+        console.log(response.data);
+      });
+    }
+  },
+  mounted: function mounted() {
+    console.log('Component mounted.');
+    search();
   }
 });
 
@@ -41553,122 +41622,7 @@ var render = function() {
             ])
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "card col-md-12" },
-        [
-          _c("div", { staticClass: "card-header" }, [_vm._v("Filter")]),
-          _vm._v(" "),
-          _vm._m(3),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              { staticClass: "col-md-3" },
-              [
-                _c("multiselect", {
-                  attrs: {
-                    options: _vm.author,
-                    multiple: false,
-                    label: "name",
-                    "track-by": "id"
-                  },
-                  on: { input: _vm.search },
-                  model: {
-                    value: _vm.author_id,
-                    callback: function($$v) {
-                      _vm.author_id = $$v
-                    },
-                    expression: "author_id"
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-3" },
-              [
-                _c("multiselect", {
-                  attrs: {
-                    options: _vm.faculty,
-                    label: "name",
-                    "track-by": "id"
-                  },
-                  on: { input: _vm.search },
-                  model: {
-                    value: _vm.faculty_id,
-                    callback: function($$v) {
-                      _vm.faculty_id = $$v
-                    },
-                    expression: "faculty_id"
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-3" },
-              [
-                _c("multiselect", {
-                  attrs: {
-                    options: _vm.course,
-                    label: "name",
-                    "track-by": "id"
-                  },
-                  on: { input: _vm.search },
-                  model: {
-                    value: _vm.course_id,
-                    callback: function($$v) {
-                      _vm.course_id = $$v
-                    },
-                    expression: "course_id"
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-3" },
-              [
-                _c("multiselect", {
-                  attrs: {
-                    options: _vm.department,
-                    label: "name",
-                    "track-by": "id"
-                  },
-                  on: { input: _vm.search },
-                  model: {
-                    value: _vm.department_id,
-                    callback: function($$v) {
-                      _vm.department_id = $$v
-                    },
-                    expression: "department_id"
-                  }
-                })
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _vm._l(_vm.resultFilter, function(value, index) {
-            return _c("div", { key: index, staticClass: "card-body" }, [
-              _c("img", {
-                staticStyle: { height: "400px", width: "400px" },
-                attrs: { src: "/images/" + value.image }
-              })
-            ])
-          })
-        ],
-        2
-      )
+      ])
     ])
   ])
 }
@@ -41725,28 +41679,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("tr", [
       _c("td", { attrs: { colspan: "4" } }, [_vm._v("No Data Available.")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("label", [_c("strong", [_vm._v("Author")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("label", [_c("strong", [_vm._v("Faculty")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("label", [_c("strong", [_vm._v("Course")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("label", [_c("strong", [_vm._v("Department")])])
-      ])
     ])
   }
 ]
@@ -42645,7 +42577,7 @@ var staticRenderFns = [
       _c(
         "h4",
         { staticClass: "card-title", attrs: { id: "basic-layout-form" } },
-        [_c("b", [_vm._v("BookManagement Component")])]
+        [_c("b", [_vm._v("Book Management Component")])]
       )
     ])
   },
@@ -42985,6 +42917,271 @@ var staticRenderFns = [
             ])
           ])
         ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/OrderBook.vue?vue&type=template&id=11c605fc&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/OrderBook.vue?vue&type=template&id=11c605fc& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "card col-md-12 text-center" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c("multiselect", {
+                      attrs: {
+                        options: _vm.author,
+                        multiple: false,
+                        label: "name",
+                        "track-by": "id"
+                      },
+                      on: { input: _vm.search },
+                      model: {
+                        value: _vm.author_info,
+                        callback: function($$v) {
+                          _vm.author_info = $$v
+                        },
+                        expression: "author_info"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c("multiselect", {
+                      attrs: {
+                        options: _vm.faculty,
+                        label: "name",
+                        "track-by": "id"
+                      },
+                      on: { input: _vm.search },
+                      model: {
+                        value: _vm.faculty_info,
+                        callback: function($$v) {
+                          _vm.faculty_info = $$v
+                        },
+                        expression: "faculty_info"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c("multiselect", {
+                      attrs: {
+                        options: _vm.course,
+                        label: "name",
+                        "track-by": "id"
+                      },
+                      on: { input: _vm.search },
+                      model: {
+                        value: _vm.course_info,
+                        callback: function($$v) {
+                          _vm.course_info = $$v
+                        },
+                        expression: "course_info"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3" },
+                  [
+                    _c("multiselect", {
+                      attrs: {
+                        options: _vm.department,
+                        label: "name",
+                        "track-by": "id"
+                      },
+                      on: { input: _vm.search },
+                      model: {
+                        value: _vm.department_info,
+                        callback: function($$v) {
+                          _vm.department_info = $$v
+                        },
+                        expression: "department_info"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "featured-section" }, [
+                  _c(
+                    "div",
+                    { staticClass: "container" },
+                    [
+                      _c("h1", { staticClass: "text-center" }, [
+                        _vm._v("CSS Grid Example")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        { staticClass: "section-description text-center" },
+                        [
+                          _vm._v(
+                            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquid earum fugiat debitis nam, illum vero, maiores odio exercitationem quaerat. Impedit iure fugit veritatis cumque quo provident doloremque est itaque."
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _vm._l(_vm.resultData, function(value, index) {
+                        return _c(
+                          "div",
+                          { key: index, staticClass: "products text-center" },
+                          [
+                            _c("div", { staticClass: "product" }, [
+                              _c("a", { attrs: { href: "#" } }, [
+                                _c("img", {
+                                  attrs: { src: "/images/" + value.image }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(4, true),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "product-price" }, [
+                                _vm._v("$2499.99")
+                              ])
+                            ])
+                          ]
+                        )
+                      }),
+                      _vm._v(" "),
+                      _vm._m(5)
+                    ],
+                    2
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c(
+        "h4",
+        { staticClass: "card-title", attrs: { id: "basic-layout-form" } },
+        [_c("b", [_vm._v("Order Book Component")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c(
+        "h4",
+        { staticClass: "card-title", attrs: { id: "basic-layout-form" } },
+        [_c("b", [_vm._v("Filter")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("label", [_c("strong", [_vm._v("Author")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("label", [_c("strong", [_vm._v("Faculty")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("label", [_c("strong", [_vm._v("Course")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("label", [_c("strong", [_vm._v("Department")])])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center button-container" }, [
+      _c("a", { staticClass: "button", attrs: { href: "#" } }, [
+        _vm._v("Featured")
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "button", attrs: { href: "#" } }, [
+        _vm._v("On Sale")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("div", { staticClass: "product-name" }, [_vm._v("MacBook Pro")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center button-container" }, [
+      _c("a", { staticClass: "button", attrs: { href: "#" } }, [
+        _vm._v("View more products")
       ])
     ])
   }
@@ -58184,6 +58381,9 @@ var routes = [{
 }, {
   path: '/booklist',
   component: __webpack_require__(/*! ./components/BookList.vue */ "./resources/js/components/BookList.vue")["default"]
+}, {
+  path: '/orderbook',
+  component: __webpack_require__(/*! ./components/OrderBook.vue */ "./resources/js/components/OrderBook.vue")["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
   // mode: 'history',
@@ -58473,6 +58673,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/OrderBook.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/OrderBook.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _OrderBook_vue_vue_type_template_id_11c605fc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OrderBook.vue?vue&type=template&id=11c605fc& */ "./resources/js/components/OrderBook.vue?vue&type=template&id=11c605fc&");
+/* harmony import */ var _OrderBook_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OrderBook.vue?vue&type=script&lang=js& */ "./resources/js/components/OrderBook.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _OrderBook_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _OrderBook_vue_vue_type_template_id_11c605fc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _OrderBook_vue_vue_type_template_id_11c605fc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/OrderBook.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/OrderBook.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/OrderBook.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderBook_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./OrderBook.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/OrderBook.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderBook_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/OrderBook.vue?vue&type=template&id=11c605fc&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/OrderBook.vue?vue&type=template&id=11c605fc& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderBook_vue_vue_type_template_id_11c605fc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./OrderBook.vue?vue&type=template&id=11c605fc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/OrderBook.vue?vue&type=template&id=11c605fc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderBook_vue_vue_type_template_id_11c605fc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderBook_vue_vue_type_template_id_11c605fc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/UserManagement.vue":
 /*!****************************************************!*\
   !*** ./resources/js/components/UserManagement.vue ***!
@@ -58560,8 +58829,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\BookEasy\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\BookEasy\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/html/BookEasy/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/html/BookEasy/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

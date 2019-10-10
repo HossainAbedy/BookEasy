@@ -83,89 +83,16 @@
                     </div>
                 </div>
             </div>
-            <div class="card col-md-12">
-                <div class="card-header">Filter</div>
-                 <div class="row">
-                    <div class="col-md-3">
-                        <label><strong>Author</strong></label>
-                    </div>
-                    <div class="col-md-3">
-                        <label><strong>Faculty</strong></label>
-                    </div>
-                    <div class="col-md-3">
-                        <label><strong>Course</strong></label>
-                    </div>
-                    <div class="col-md-3">
-                       <label><strong>Department</strong></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <multiselect
-                        v-model="author_id"
-                        :options="author"
-                        :multiple="false"
-                        label="name"
-                        track-by="id"
-                        @input="search" />
-                    </div>
-                    <div class="col-md-3">
-                        <multiselect
-                        v-model="faculty_id"
-                        :options="faculty"
-                        label="name"
-                        track-by="id"
-                        @input="search" />
-                    </div>
-                    <div class="col-md-3">
-                        <multiselect
-                        v-model="course_id"
-                        :options="course"
-                        label="name"
-                        track-by="id"
-                        @input="search" />
-                    </div>
-                    <div class="col-md-3">
-                        <multiselect
-                        v-model="department_id"
-                        :options="department"
-                        label="name"
-                        track-by="id"
-                        @input="search" />
-                    </div>
-                </div>
-                <div class="card-body" v-for="(value,index) in resultFilter" :key="index">
-                    <img :src="'/images/'+value.image" style="height:400px;width:400px;">
-                </div>
-            </div>
         </div>
     </div>
 </template>
 
 <script>
-    import Multiselect from 'vue-multiselect'
     export default {
-        components: { Multiselect },
-        props: ['author','faculty','course','department'],
         data(){
             return {
                 resultData: [],
-                resultFilter: [],
-                author_id:'',
-                faculty_id:'',
-                course_id:'',
-                department_id:'',
             }
-        },
-        methods:{
-            search(){
-                    axios.get('/filter/author_id?author_id='+this.author_id.id+'&faculty_id?faculty_id='+this.faculty_id.id
-                    +'&course_id?course_id='+this.course_id.id+'&department_id?department_id='+this.department_id.id)
-                    .then((response) => {
-                    this.resultFilter = response.data.data;
-                    console.log(response.data)
-                });
-            },
         },
         mounted() {
             axios.get('/book').then((response) => {

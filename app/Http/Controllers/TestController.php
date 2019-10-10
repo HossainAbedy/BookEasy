@@ -12,7 +12,30 @@ use Illuminate\Http\Request;
 class TestController extends Controller
 {
     public function search(Request $request){
-        dd($request->toArray());
+        // if($request['author_info']||$request['faculty_info']||$request['course_info']||$request['department_info']):
+            $results = Book::join('book_infos','book_infos.id','=','books.book_info')
+                ->join('authors','authors.id','=','book_infos.author_id')
+                ->join('faculties','faculties.id','=','book_infos.faculty_id')
+                ->join('departments','departments.id','=','book_infos.department_id')
+                ->join('courses','courses.id','=','book_infos.course_id')
+                ->select('books.name','books.image','books.version','books.publication','books.price','books.created_at',
+                        'authors.name as author_name','faculties.name as faculty_name','courses.name as course_name','departments.name as department_name',
+                        'authors.id as author_id','faculties.id as faculty_id','courses.id as course_id','departments.id as department_id');
+                // dd($results->toArray());
+                if($request['author_info']):
+                    $results->where('book_infos.author_id',$request['author_info']);
+                endif;
+                if($request['faculty_info']):
+                    $results->where('book_infos.faculty_id',$request['faculty_info']);
+                endif;
+                if($request['course_info']):
+                    $results->where('book_infos.course_id',$request['course_info']);
+                endif;
+                if($request['department_info']):
+                    $results->where('book_infos.department_id',$request['department_info']);
+                endif;             
+                return $results->get()->toArray();
+        // endif;        
     }
     public function getbook(){
         // $result = Book::with(['info' => function($q){

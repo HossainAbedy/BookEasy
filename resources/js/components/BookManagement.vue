@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-10">
-                                <h4 class="card-title" id="basic-layout-form"><b>BookManagement Component</b></h4>
+                                <h4 class="card-title" id="basic-layout-form"><b>Book Management Component</b></h4>
                             </div>    
                             <div class="col-md-2">
                                 <router-link to="/booklist" class="nav-link">

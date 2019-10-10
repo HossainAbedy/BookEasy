@@ -14,19 +14,6 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <label><strong>Author</strong></label>
-                                </div>
-                                <div class="col-md-3">
-                                    <label><strong>Faculty</strong></label>
-                                </div>
-                                <div class="col-md-3">
-                                    <label><strong>Course</strong></label>
-                                </div>
-                                <div class="col-md-3">
-                                <label><strong>Department</strong></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
                                     <multiselect
                                     v-model="author_info"
                                     :options="author"
@@ -36,6 +23,7 @@
                                     @input="search" />
                                 </div>
                                 <div class="col-md-3">
+                                    <label><strong>Faculty</strong></label>
                                     <multiselect
                                     v-model="faculty_info"
                                     :options="faculty"
@@ -44,6 +32,7 @@
                                     @input="search" />
                                 </div>
                                 <div class="col-md-3">
+                                    <label><strong>Course</strong></label>
                                     <multiselect
                                     v-model="course_info"
                                     :options="course"
@@ -52,6 +41,7 @@
                                     @input="search" />
                                 </div>
                                 <div class="col-md-3">
+                                    <label><strong>Department</strong></label>
                                     <multiselect
                                     v-model="department_info"
                                     :options="department"
@@ -73,8 +63,8 @@
                                             <div class="product">
                                                 <!-- <a href="#"><img :src="'/images/'+value.image" style="height:400px;width:400px;"></a> -->
                                                 <a href="#"><img :src="'/images/'+value.image"></a>
-                                                <a href="#"><div class="product-name">MacBook Pro</div></a>
-                                                <div class="product-price">$2499.99</div>
+                                                <a href="#"><div class="product-name">{{value.name}}</div></a>
+                                                <div class="product-price">version: {{value.version}}   Price: {{value.price}} BDT</div>                                               
                                             </div>
                                         </div> <!-- end products -->
 
@@ -126,7 +116,7 @@
         },
         mounted() {
             console.log('Component mounted.')
-            search();
+            this.search();
         }
     }
 </script>

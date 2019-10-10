@@ -47,6 +47,25 @@ $fa-font-path:'../webfonts';
     max-width: 1200px;
     margin: auto;
 }
+.button {
+    border: 1px solid $text-color;
+    padding: 12px 40px;
+  
+    &:hover {
+      color: $white;
+      background: $text-color;
+    }
+}
+  
+.button-white {
+    border: 1px solid $white;
+    color: $white !important;
+
+    &:hover {
+        color: $text-color !important;
+        background: $white;
+    }
+}
 .section-description {
     width: 80%;
     margin: auto;

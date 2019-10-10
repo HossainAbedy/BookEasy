@@ -21,7 +21,7 @@ class TestController extends Controller
                 ->select('books.name','books.image','books.version','books.publication','books.price','books.created_at',
                         'authors.name as author_name','faculties.name as faculty_name','courses.name as course_name','departments.name as department_name',
                         'authors.id as author_id','faculties.id as faculty_id','courses.id as course_id','departments.id as department_id');
-                // dd($results->toArray());
+                // dd($results->get()->toArray());
                 if($request['author_info']):
                     $results->where('book_infos.author_id',$request['author_info']);
                 endif;

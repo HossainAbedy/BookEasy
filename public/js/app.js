@@ -2589,16 +2589,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2634,7 +2624,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log('Component mounted.');
-    search();
+    this.search();
   }
 });
 
@@ -42952,13 +42942,13 @@ var render = function() {
             _c("div", { staticClass: "card col-md-12 text-center" }, [
               _vm._m(1),
               _vm._v(" "),
-              _vm._m(2),
-              _vm._v(" "),
               _c("div", { staticClass: "row" }, [
                 _c(
                   "div",
                   { staticClass: "col-md-3" },
                   [
+                    _vm._m(2),
+                    _vm._v(" "),
                     _c("multiselect", {
                       attrs: {
                         options: _vm.author,
@@ -42983,6 +42973,8 @@ var render = function() {
                   "div",
                   { staticClass: "col-md-3" },
                   [
+                    _vm._m(3),
+                    _vm._v(" "),
                     _c("multiselect", {
                       attrs: {
                         options: _vm.faculty,
@@ -43006,6 +42998,8 @@ var render = function() {
                   "div",
                   { staticClass: "col-md-3" },
                   [
+                    _vm._m(4),
+                    _vm._v(" "),
                     _c("multiselect", {
                       attrs: {
                         options: _vm.course,
@@ -43029,6 +43023,8 @@ var render = function() {
                   "div",
                   { staticClass: "col-md-3" },
                   [
+                    _vm._m(5),
+                    _vm._v(" "),
                     _c("multiselect", {
                       attrs: {
                         options: _vm.department,
@@ -43069,7 +43065,7 @@ var render = function() {
                         ]
                       ),
                       _vm._v(" "),
-                      _vm._m(3),
+                      _vm._m(6),
                       _vm._v(" "),
                       _vm._l(_vm.resultData, function(value, index) {
                         return _c(
@@ -43083,17 +43079,27 @@ var render = function() {
                                 })
                               ]),
                               _vm._v(" "),
-                              _vm._m(4, true),
+                              _c("a", { attrs: { href: "#" } }, [
+                                _c("div", { staticClass: "product-name" }, [
+                                  _vm._v(_vm._s(value.name))
+                                ])
+                              ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "product-price" }, [
-                                _vm._v("$2499.99")
+                                _vm._v(
+                                  "version: " +
+                                    _vm._s(value.version) +
+                                    "   Price: " +
+                                    _vm._s(value.price) +
+                                    " BDT"
+                                )
                               ])
                             ])
                           ]
                         )
                       }),
                       _vm._v(" "),
-                      _vm._m(5)
+                      _vm._m(7)
                     ],
                     2
                   )
@@ -43135,23 +43141,25 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("label", [_c("strong", [_vm._v("Author")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("label", [_c("strong", [_vm._v("Faculty")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("label", [_c("strong", [_vm._v("Course")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("label", [_c("strong", [_vm._v("Department")])])
-      ])
-    ])
+    return _c("label", [_c("strong", [_vm._v("Author")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("strong", [_vm._v("Faculty")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("strong", [_vm._v("Course")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("strong", [_vm._v("Department")])])
   },
   function() {
     var _vm = this
@@ -43165,14 +43173,6 @@ var staticRenderFns = [
       _c("a", { staticClass: "button", attrs: { href: "#" } }, [
         _vm._v("On Sale")
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c("div", { staticClass: "product-name" }, [_vm._v("MacBook Pro")])
     ])
   },
   function() {

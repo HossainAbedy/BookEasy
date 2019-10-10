@@ -29707,6 +29707,26 @@ readers do not read off random characters that represent icons */
   margin: auto;
 }
 
+.button {
+  border: 1px solid #212121;
+  padding: 12px 40px;
+}
+
+.button:hover {
+  color: #e9e9e9;
+  background: #212121;
+}
+
+.button-white {
+  border: 1px solid #e9e9e9;
+  color: #e9e9e9 !important;
+}
+
+.button-white:hover {
+  color: #212121 !important;
+  background: #e9e9e9;
+}
+
 .section-description {
   width: 80%;
   margin: auto;

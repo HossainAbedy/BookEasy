@@ -7,8 +7,8 @@
                         <h4 class="card-title" id="basic-layout-form"><b>Order Book Component</b></h4>
                     </div>
                     <div class="card-body">
-                        <div class="card col-md-12 text-center">
-                            <div class="card-header">
+                        <!-- <div class="card col-md-12 text-center"> -->
+                            <div class="card-header text-center">
                                 <h4 class="card-title" id="basic-layout-form"><b>Filter</b></h4>
                             </div>
                             <div class="row">
@@ -59,12 +59,18 @@
                                             <a href="#" class="button">Featured</a>
                                             <a href="#" class="button">On Sale</a>
                                         </div>
-                                        <div class="products text-center" v-for="(value,index) in resultData" :key="index">
-                                            <div class="product">
-                                                <!-- <a href="#"><img :src="'/images/'+value.image" style="height:400px;width:400px;"></a> -->
-                                                <a href="#"><img :src="'/images/'+value.image"></a>
-                                                <a href="#"><div class="product-name">{{value.name}}</div></a>
-                                                <div class="product-price">version: {{value.version}}   Price: {{value.price}} BDT</div>                                               
+                                        <div class="products">
+                                            <div class="card" v-for="(value,index) in resultData" :key="index">
+                                                <div class="product">
+                                                    <!-- <a href="#"><img :src="'/images/'+value.image" style="height:400px;width:400px;"></a> -->
+                                                    <a href="#"><img :src="'/images/'+value.image"></a>
+                                                    <div class="cart">
+                                                        <a href="#" class="text">Cart<i class="fas fa-plus-circle"></i></a>
+                                                    </div>
+                                                    <a href="#"><div class="product-name orange">{{value.name}}</div></a>
+                                                    <div class="product-price green">version: {{value.version}} </div>
+                                                    <div class="product-price red">Price: {{value.price}} BDT </div>                                                     
+                                                </div>
                                             </div>
                                         </div> <!-- end products -->
 
@@ -73,7 +79,7 @@
                                         </div>
                                     </div> <!-- end container -->
                                 </div> <!-- end featured-section -->
-                            </div>
+                            <!-- </div> -->
                         </div>
                     </div>
                 </div>

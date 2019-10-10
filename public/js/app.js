@@ -2589,6 +2589,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -42939,170 +42945,160 @@ var render = function() {
           _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "card col-md-12 text-center" }, [
-              _vm._m(1),
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                { staticClass: "col-md-3" },
+                [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c("multiselect", {
+                    attrs: {
+                      options: _vm.author,
+                      multiple: false,
+                      label: "name",
+                      "track-by": "id"
+                    },
+                    on: { input: _vm.search },
+                    model: {
+                      value: _vm.author_info,
+                      callback: function($$v) {
+                        _vm.author_info = $$v
+                      },
+                      expression: "author_info"
+                    }
+                  })
+                ],
+                1
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
-                  { staticClass: "col-md-3" },
-                  [
-                    _vm._m(2),
-                    _vm._v(" "),
-                    _c("multiselect", {
-                      attrs: {
-                        options: _vm.author,
-                        multiple: false,
-                        label: "name",
-                        "track-by": "id"
+              _c(
+                "div",
+                { staticClass: "col-md-3" },
+                [
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _c("multiselect", {
+                    attrs: {
+                      options: _vm.faculty,
+                      label: "name",
+                      "track-by": "id"
+                    },
+                    on: { input: _vm.search },
+                    model: {
+                      value: _vm.faculty_info,
+                      callback: function($$v) {
+                        _vm.faculty_info = $$v
                       },
-                      on: { input: _vm.search },
-                      model: {
-                        value: _vm.author_info,
-                        callback: function($$v) {
-                          _vm.author_info = $$v
-                        },
-                        expression: "author_info"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-md-3" },
-                  [
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _c("multiselect", {
-                      attrs: {
-                        options: _vm.faculty,
-                        label: "name",
-                        "track-by": "id"
-                      },
-                      on: { input: _vm.search },
-                      model: {
-                        value: _vm.faculty_info,
-                        callback: function($$v) {
-                          _vm.faculty_info = $$v
-                        },
-                        expression: "faculty_info"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-md-3" },
-                  [
-                    _vm._m(4),
-                    _vm._v(" "),
-                    _c("multiselect", {
-                      attrs: {
-                        options: _vm.course,
-                        label: "name",
-                        "track-by": "id"
-                      },
-                      on: { input: _vm.search },
-                      model: {
-                        value: _vm.course_info,
-                        callback: function($$v) {
-                          _vm.course_info = $$v
-                        },
-                        expression: "course_info"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-md-3" },
-                  [
-                    _vm._m(5),
-                    _vm._v(" "),
-                    _c("multiselect", {
-                      attrs: {
-                        options: _vm.department,
-                        label: "name",
-                        "track-by": "id"
-                      },
-                      on: { input: _vm.search },
-                      model: {
-                        value: _vm.department_info,
-                        callback: function($$v) {
-                          _vm.department_info = $$v
-                        },
-                        expression: "department_info"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ]),
+                      expression: "faculty_info"
+                    }
+                  })
+                ],
+                1
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c("div", { staticClass: "featured-section" }, [
+              _c(
+                "div",
+                { staticClass: "col-md-3" },
+                [
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _c("multiselect", {
+                    attrs: {
+                      options: _vm.course,
+                      label: "name",
+                      "track-by": "id"
+                    },
+                    on: { input: _vm.search },
+                    model: {
+                      value: _vm.course_info,
+                      callback: function($$v) {
+                        _vm.course_info = $$v
+                      },
+                      expression: "course_info"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-md-3" },
+                [
+                  _vm._m(5),
+                  _vm._v(" "),
+                  _c("multiselect", {
+                    attrs: {
+                      options: _vm.department,
+                      label: "name",
+                      "track-by": "id"
+                    },
+                    on: { input: _vm.search },
+                    model: {
+                      value: _vm.department_info,
+                      callback: function($$v) {
+                        _vm.department_info = $$v
+                      },
+                      expression: "department_info"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "featured-section" }, [
+                _c("div", { staticClass: "container" }, [
+                  _c("h1", { staticClass: "text-center" }, [
+                    _vm._v("CSS Grid Example")
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "section-description text-center" }, [
+                    _vm._v(
+                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquid earum fugiat debitis nam, illum vero, maiores odio exercitationem quaerat. Impedit iure fugit veritatis cumque quo provident doloremque est itaque."
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(6),
+                  _vm._v(" "),
                   _c(
                     "div",
-                    { staticClass: "container" },
-                    [
-                      _c("h1", { staticClass: "text-center" }, [
-                        _vm._v("CSS Grid Example")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        { staticClass: "section-description text-center" },
-                        [
-                          _vm._v(
-                            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquid earum fugiat debitis nam, illum vero, maiores odio exercitationem quaerat. Impedit iure fugit veritatis cumque quo provident doloremque est itaque."
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm._m(6),
-                      _vm._v(" "),
-                      _vm._l(_vm.resultData, function(value, index) {
-                        return _c(
-                          "div",
-                          { key: index, staticClass: "products text-center" },
-                          [
-                            _c("div", { staticClass: "product" }, [
-                              _c("a", { attrs: { href: "#" } }, [
-                                _c("img", {
-                                  attrs: { src: "/images/" + value.image }
-                                })
-                              ]),
-                              _vm._v(" "),
-                              _c("a", { attrs: { href: "#" } }, [
-                                _c("div", { staticClass: "product-name" }, [
-                                  _vm._v(_vm._s(value.name))
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "product-price" }, [
-                                _vm._v(
-                                  "version: " +
-                                    _vm._s(value.version) +
-                                    "   Price: " +
-                                    _vm._s(value.price) +
-                                    " BDT"
-                                )
-                              ])
+                    { staticClass: "products" },
+                    _vm._l(_vm.resultData, function(value, index) {
+                      return _c("div", { key: index, staticClass: "card" }, [
+                        _c("div", { staticClass: "product" }, [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _c("img", {
+                              attrs: { src: "/images/" + value.image }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(7, true),
+                          _vm._v(" "),
+                          _c("a", { attrs: { href: "#" } }, [
+                            _c("div", { staticClass: "product-name orange" }, [
+                              _vm._v(_vm._s(value.name))
                             ])
-                          ]
-                        )
-                      }),
-                      _vm._v(" "),
-                      _vm._m(7)
-                    ],
-                    2
-                  )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "product-price green" }, [
+                            _vm._v("version: " + _vm._s(value.version) + " ")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "product-price red" }, [
+                            _vm._v("Price: " + _vm._s(value.price) + " BDT ")
+                          ])
+                        ])
+                      ])
+                    }),
+                    0
+                  ),
+                  _vm._v(" "),
+                  _vm._m(8)
                 ])
               ])
             ])
@@ -43129,7 +43125,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
+    return _c("div", { staticClass: "card-header text-center" }, [
       _c(
         "h4",
         { staticClass: "card-title", attrs: { id: "basic-layout-form" } },
@@ -43172,6 +43168,17 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("a", { staticClass: "button", attrs: { href: "#" } }, [
         _vm._v("On Sale")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "cart" }, [
+      _c("a", { staticClass: "text", attrs: { href: "#" } }, [
+        _vm._v("Cart"),
+        _c("i", { staticClass: "fas fa-plus-circle" })
       ])
     ])
   },

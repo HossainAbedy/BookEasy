@@ -8,48 +8,6 @@
                     </div>
                     <div class="card-body">
                         <!-- <div class="card col-md-12 text-center"> -->
-                            <div class="card-header text-center">
-                                <h4 class="card-title" id="basic-layout-form"><b>Filter</b></h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <label><strong>Author</strong></label>
-                                    <multiselect
-                                    v-model="author_info"
-                                    :options="author"
-                                    :multiple="false"
-                                    label="name"
-                                    track-by="id"
-                                    @input="search" />
-                                </div>
-                                <div class="col-md-3">
-                                    <label><strong>Faculty</strong></label>
-                                    <multiselect
-                                    v-model="faculty_info"
-                                    :options="faculty"
-                                    label="name"
-                                    track-by="id"
-                                    @input="search" />
-                                </div>
-                                <div class="col-md-3">
-                                    <label><strong>Course</strong></label>
-                                    <multiselect
-                                    v-model="course_info"
-                                    :options="course"
-                                    label="name"
-                                    track-by="id"
-                                    @input="search" />
-                                </div>
-                                <div class="col-md-3">
-                                    <label><strong>Department</strong></label>
-                                    <multiselect
-                                    v-model="department_info"
-                                    :options="department"
-                                    label="name"
-                                    track-by="id"
-                                    @input="search" />
-                                </div>
-                            </div>
                             <div class="card-body">
                                 <div class="featured-section">
                                     <div class="container">
@@ -59,17 +17,60 @@
                                             <a href="#" class="button">Featured</a>
                                             <a href="#" class="button">On Sale</a>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-3 form-group">
+                                                <label class="text"><strong>Filter By Author</strong></label>
+                                                <multiselect
+                                                v-model="author_info"
+                                                :options="author"
+                                                :multiple="false"
+                                                label="name"
+                                                track-by="id"
+                                                @input="search" />
+                                            </div>
+                                            <div class="col-md-3 form-group">
+                                                <label class="text"><strong>Filter By Faculty</strong></label>
+                                                <multiselect
+                                                v-model="faculty_info"
+                                                :options="faculty"
+                                                label="name"
+                                                track-by="id"
+                                                @input="search" />
+                                            </div>
+                                            <div class="col-md-3 form-group">
+                                                <label class="text"><strong>Filter By Course</strong></label>
+                                                <multiselect
+                                                v-model="course_info"
+                                                :options="course"
+                                                label="name"
+                                                track-by="id"
+                                                @input="search" />
+                                            </div>
+                                            <div class="col-md-3 form-group">
+                                                <label class="text"><strong>Filter By Department</strong></label>
+                                                <multiselect
+                                                v-model="department_info"
+                                                :options="department"
+                                                label="name"
+                                                track-by="id"
+                                                @input="search" />
+                                            </div>
+                                        </div>
                                         <div class="products">
                                             <div class="card" v-for="(value,index) in resultData" :key="index">
                                                 <div class="product">
                                                     <!-- <a href="#"><img :src="'/images/'+value.image" style="height:400px;width:400px;"></a> -->
-                                                    <a href="#"><img :src="'/images/'+value.image"></a>
+                                                    <a href="#"><img :src="'/images/'+value.image" style="height:200px;width:200px;"></a>
                                                     <div class="cart">
-                                                        <a href="#" class="text">Cart<i class="fas fa-plus-circle"></i></a>
+                                                        <router-link to="/cart" class="text">
+                                                            <button type="button" class="btn btn-primary btn-min-width mr-1 mb-1">
+                                                                <b>Add</b> <i class="fas fa-plus-circle"></i> <b>Cart</b>
+                                                            </button>
+                                                        </router-link>
                                                     </div>
-                                                    <a href="#"><div class="product-name orange">{{value.name}}</div></a>
-                                                    <div class="product-price green">version: {{value.version}} </div>
-                                                    <div class="product-price red">Price: {{value.price}} BDT </div>                                                     
+                                                    <a href="#"><div class=" orange">{{value.name}}</div></a>
+                                                    <div class=" green">version: {{value.version}} </div>
+                                                    <div class=" red">Price: {{value.price}} BDT </div>
                                                 </div>
                                             </div>
                                         </div> <!-- end products -->

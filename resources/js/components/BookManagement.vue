@@ -7,14 +7,14 @@
                         <div class="row">
                             <div class="col-md-10">
                                 <h4 class="card-title" id="basic-layout-form"><b>Book Management Component</b></h4>
-                            </div>    
+                            </div>
                             <div class="col-md-2">
                                 <router-link to="/booklist" class="nav-link">
-                                    <button type="button" class="btn btn-primary btn-min-width mr-1 mb-1">                                  
-                                        <i class="fa fa-check"></i> <b>View List</b>                                 
+                                    <button type="button" class="btn btn-primary btn-min-width mr-1 mb-1">
+                                        <i class="fa fa-check"></i> <b>View List</b>
                                     </button>
                                 </router-link>
-                            </div>    
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -35,7 +35,7 @@
 
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label>Version<span class="requiredField red">*</span></label>
+                                                    <label class="text">Version<span class="requiredField red">*</span></label>
                                                     <input type="text" class="form-control"
                                                     placeholder="Version" v-model="form.version"
                                                     name="version" >
@@ -45,7 +45,7 @@
 
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label>Price<span class="requiredField red">*</span></label>
+                                                    <label class="text">Price<span class="requiredField red">*</span></label>
                                                     <input type="text" class="form-control"
                                                     placeholder="Price" v-model="form.price"
                                                     name="price" >
@@ -80,13 +80,13 @@
                                                     {{success}}
                                                     </div>
                                                     <!-- <form @submit="formSubmit" enctype="multipart/form-data"> -->
-                                                        <div class="row">                               
+                                                        <div class="row">
                                                             <div class="col-md-6">
-                                                                <label>Image<span class="requiredField red">*</span></label>
+                                                                <label class="text">Image<span class="requiredField red">*</span></label>
                                                                 <input type="file" class="form-control" v-on:change="onImageChange">
-                                                            </div> 
+                                                            </div>
                                                             <!-- <div class="col-md-6">
-                                                                 <label>&nbsp;</label>                                  
+                                                                 <label>&nbsp;</label>
                                                                 <button class="btn btn-success form-control"><b>Add Image</b></button>
                                                             </div> -->
                                                         </div>
@@ -109,7 +109,7 @@
                                         <hr>
 
                                         <div class="col-md-12">
-                                            <div class="row">
+                                            <div class="row text">
                                                 <div class="col-md-4">
                                                     <label class="text">Author Name<span class="requiredField red">*</span></label>
                                                 </div>
@@ -157,9 +157,9 @@
                                         </div>
                                         <br>
                                         <div class="col-md-12">
-                                            <div class="row">
+                                            <div class="row text">
                                                 <div class="col-md-4">
-                                                    <label>Faculty Name<span class="requiredField red">*</span></label>
+                                                    <label class="text">Faculty Name<span class="requiredField red">*</span></label>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <multiselect
@@ -204,9 +204,9 @@
                                         </div>
                                         <br>
                                         <div class="col-md-12">
-                                            <div class="row">
+                                            <div class="row text">
                                                 <div class="col-md-4">
-                                                    <label>Course Name<span class="requiredField red">*</span></label>
+                                                    <label class="text">Course Name<span class="requiredField red">*</span></label>
                                                  </div>
                                                 <div class="col-md-6">
                                                     <multiselect
@@ -265,9 +265,9 @@
                                         </div>
                                         <br>
                                         <div class="col-md-12">
-                                            <div class="row">
+                                            <div class="row text">
                                                 <div class="col-md-4">
-                                                    <label>Department Name<span class="requiredField red">*</span></label>
+                                                    <label class="text">Department Name<span class="requiredField red">*</span></label>
                                                  </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -312,8 +312,8 @@
                                                 </div>
                                             </div>
                                          </div>
-                                        <div class="form-footer">
-                                            <button type="submit" class="btn btn-success btn-min-width mr-1 mb-1 float-right"><i class="fa fa-pencil-square-o"></i> <b>Add</b></button>
+                                        <div class="form-footer text-center">
+                                            <button type="submit" class="btn btn-success btn-min-width mr-1 mb-1" style="margin-top:25px"><i class="fa fa-pencil-square-o"></i> <b>Add Book</b></button>
                                         </div>
                                     </div>
                                 </div>
@@ -353,7 +353,7 @@
                     },
                     course:{
                         name:'',
-                        faculty_name:'',                   
+                        faculty_name:'',
                         department_name:'',
                     },
                     department:{
@@ -372,13 +372,13 @@
             createAuthor(){
                 this.$Progress.start();
                 axios.post('/author',this.form.author)
-                .then(() => { 
+                .then(() => {
                     Fire.$emit('afterCreate');
                     $('#addNewA').modal('hide')
                     toast.fire({
                         type: 'success',
                         title: 'Created successfully'
-                        });                   
+                        });
                     }).catch( () => {
                 })
                 this.$Progress.finish();
@@ -468,7 +468,7 @@
         created(){
             Fire.$on('BookCreate',() => {
                 console.log('BookCreate.')
-               
+
            });
         },
         mounted() {

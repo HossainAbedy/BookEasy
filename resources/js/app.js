@@ -56,6 +56,7 @@ let routes = [
     { path: '/dashboard', component: require('./components/DashBoard.vue').default},
     { path: '/booklist', component: require('./components/BookList.vue').default},
     { path: '/orderbook', component: require('./components/OrderBook.vue').default},
+    { path: '/cart', component: require('./components/Cart.vue').default},
   ]
 
 const router = new VueRouter({
